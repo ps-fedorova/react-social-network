@@ -1,0 +1,12 @@
+.link {
+ transition: all .3s;
+  cursor: pointer;
+}
+.link:hover{
+  opacity: .5;
+}
+.list {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
