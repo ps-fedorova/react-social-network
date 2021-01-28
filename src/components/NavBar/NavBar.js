@@ -10,7 +10,7 @@ const NavBar = () => {
         {NavBarItem.map((item, index) => {
           return (
             <li key={index} className={s.navBar__item}>
-              <a className="link">{item}</a>
+              <button className="button">{item}</button>
             </li>
           )
         })

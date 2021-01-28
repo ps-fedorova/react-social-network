@@ -1,15 +1,17 @@
 .link, .button {
   transition: all .3s;
   cursor: pointer;
+  padding: 0;
+  border: none;
+  font: inherit;
+  color: inherit;
+  background-color: transparent;
 }
 
 .button:hover {
   position: relative;
   opacity: 1;
   transform: scale(1.1); /*вот так*/
-}
-.link:hover {
-  opacity: .3;
 }
 
 .list {
