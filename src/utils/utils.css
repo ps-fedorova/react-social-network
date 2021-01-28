@@ -1,10 +1,17 @@
-.link {
- transition: all .3s;
+.link, .button {
+  transition: all .3s;
   cursor: pointer;
 }
-.link:hover{
-  opacity: .5;
+
+.button:hover {
+  position: relative;
+  opacity: 1;
+  transform: scale(1.1); /*вот так*/
 }
+.link:hover {
+  opacity: .3;
+}
+
 .list {
   padding: 0;
   margin: 0;

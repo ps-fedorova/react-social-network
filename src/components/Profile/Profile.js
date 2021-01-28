@@ -2,6 +2,7 @@ import React from 'react';
 import forest from "../../images/forest.jpg";
 import avatar from "../../images/avatar.jpg";
 import s from "./Profile.module.css"
+import MyPosts from "./MyPosts/MyPosts";
 
 const Profile = () => {
   return (
@@ -11,12 +12,7 @@ const Profile = () => {
       <div>
         <img className={s.profile__imgAva} src={avatar} alt={avatar}/>
       </div>
-      <div>My posts</div>
-      <ul className="list">
-        <li>post 1</li>
-        <li>post 2</li>
-        <li>post 3</li>
-      </ul>
+      <MyPosts/>
     </div>
   )
 }
