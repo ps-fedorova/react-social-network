@@ -1,5 +1,9 @@
-.nav {
+.navBar {
   grid-area: nav;
   background-color: #797979;
   padding: 5px 10px;
+}
+
+.navBar__item {
+  margin: 10px auto;
 }

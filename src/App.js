@@ -9,7 +9,7 @@ import "./utils/utils.css"
 
 function App() {
   return (
-    <div className="app-wrapper">
+    <div className="app">
       <Header/>
       <NavBar/>
       <Profile/>

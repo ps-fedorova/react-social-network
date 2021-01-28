@@ -15,6 +15,7 @@ const ARR__POSTS = [
 
 
 const MyPosts = () => {
+
   return (
     <>
       <h2>My posts</h2>

@@ -2,24 +2,19 @@ import React from 'react';
 import s from './NavBar.module.css'
 
 const NavBar = () => {
-  return(
-    <nav className={s.nav}>
+  const NavBarItem = ["Profile", "Messages", "News", "Music", "Settings"]
+
+  return (
+    <nav className={s.navBar}>
       <ul className="list">
-        <li>
-          <a className="link">Profile</a>
-        </li>
-        <li>
-          <a className="link">Messages</a>
-        </li>
-        <li>
-          <a className="link">News</a>
-        </li>
-        <li>
-          <a className="link">Music</a>
-        </li>
-        <li>
-          <a className="link">Settings</a>
-        </li>
+        {NavBarItem.map((item, index) => {
+          return (
+            <li key={index} className={s.navBar__item}>
+              <a className="link">{item}</a>
+            </li>
+          )
+        })
+        }
       </ul>
     </nav>
   )
