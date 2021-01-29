@@ -1,19 +1,20 @@
 import React from 'react';
 import s from './NavBar.module.css'
+import { NavLink } from "react-router-dom";
 
 const NavBar = () => {
   const NavBarItem = [
     {
       key: "Profile",
-      path: "/"
+      path: "/",
     },
     {
       key: "Messages",
-      path: "/messages"
+      path: "/messages",
     },
     {
       key: "Settings",
-      path: "/settings"
+      path: "/settings",
     },
   ]
 
@@ -24,7 +25,8 @@ const NavBar = () => {
           return (
             <li key={index} className={s.navBar__item}>
               <button className="button">
-                <a className="link" href={item.path}>{item.key}</a>
+                <NavLink exact className="link" activeClassName="link_active"
+                         to={item.path}>{item.key}</NavLink>
               </button>
             </li>
           )

@@ -10,8 +10,12 @@
 
 .link {
   text-decoration: none;
+  opacity: .8;
 }
-
+.link_active {
+  font-weight: bold;
+  opacity: 1;
+}
 .button:hover {
   position: relative;
   opacity: 1;
