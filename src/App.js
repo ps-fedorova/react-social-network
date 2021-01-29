@@ -1,10 +1,10 @@
 import React from "react";
 
 import './App.css';
-import Header from "./components/Header/Header";
-import NavBar from "./components/NavBar/NavBar";
-import Profile from "./components/Profile/Profile";
 import "./utils/utils.css"
+import Header from "./components/Header/Header";
+import Main from "./components/Main/Main"
+import NavBar from "./components/NavBar/NavBar";
 
 
 function App() {
@@ -12,7 +12,7 @@ function App() {
     <div className="app">
       <Header/>
       <NavBar/>
-      <Profile/>
+      <Main/>
     </div>
   );
 }

@@ -1,5 +1,5 @@
 import React from 'react';
-import Post from './../MyPosts/Post/Post'
+import Post from './Post/Post'
 import './MyPosts.module.css'
 
 const ARR__POSTS = [

@@ -10,4 +10,6 @@
   "nav content";
   grid-template-rows: auto 1fr;
   grid-template-columns: 2fr 10fr;
+  background-color: #1c1c1c;
+  color: white;
 }
