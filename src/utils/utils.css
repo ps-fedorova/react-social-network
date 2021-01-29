@@ -8,6 +8,10 @@
   background-color: transparent;
 }
 
+.link {
+  text-decoration: none;
+}
+
 .button:hover {
   position: relative;
   opacity: 1;

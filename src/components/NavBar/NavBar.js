@@ -2,7 +2,20 @@ import React from 'react';
 import s from './NavBar.module.css'
 
 const NavBar = () => {
-  const NavBarItem = ["Profile", "Messages", "News", "Music", "Settings"]
+  const NavBarItem = [
+    {
+      key: "Profile",
+      path: "/"
+    },
+    {
+      key: "Messages",
+      path: "/messages"
+    },
+    {
+      key: "Settings",
+      path: "/settings"
+    },
+  ]
 
   return (
     <nav className={s.navBar}>
@@ -10,7 +23,9 @@ const NavBar = () => {
         {NavBarItem.map((item, index) => {
           return (
             <li key={index} className={s.navBar__item}>
-              <button className="button">{item}</button>
+              <button className="button">
+                <a className="link" href={item.path}>{item.key}</a>
+              </button>
             </li>
           )
         })
