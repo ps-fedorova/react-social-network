@@ -23,7 +23,7 @@
 .button:hover {
   position: relative;
   opacity: 1;
-  transform: scale(1.1); /*вот так*/
+  transform: scale(1.05); /*вот так*/
 }
 
 .list {

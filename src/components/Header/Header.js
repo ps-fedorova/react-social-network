@@ -6,7 +6,7 @@ const Header = () => {
   return (
     <header className={s.header}>
       <div className={s.header__content}>
-        <img className={s.header__img} src={logo} alt="logo"/>
+        {/*<img className={s.header__img} src={logo} alt="logo"/>*/}
         <h1 className={s.header__title}>Social network</h1>
       </div>
     </header>
