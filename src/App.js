@@ -8,12 +8,12 @@ import NavBar from "./components/NavBar/NavBar";
 
 
 function App(props) {
-  const {ARR__POSTS, ARR__NAME} = props;
+  const { state } = props;
   return (
     <div className="app">
       <Header/>
       <NavBar/>
-      <Main ARR__POSTS={ARR__POSTS} ARR__NAME={ARR__NAME}/>
+      <Main state={state}/>
     </div>
   );
 }

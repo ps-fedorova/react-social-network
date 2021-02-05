@@ -4,24 +4,12 @@ import { BrowserRouter } from 'react-router-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-
-const ARR__POSTS = [
-  "Большие города",
-  "Пустые поезда",
-  "Ни берега, ни дна",
-  "Все начинать сначала",
-  "Холодная война",
-  "И время как вода",
-  "Он не сошел с ума",
-  "Ты ничего не знала",
-];
-
-const ARR__NAME = ["Лиза", "Лена", "Света", "Даша", "Саша"];
+import state from './redux/state';
 
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
-      <App ARR__POSTS={ARR__POSTS} ARR__NAME={ARR__NAME}/>
+      <App state={state}/>
     </BrowserRouter>
   </React.StrictMode>,
   document.getElementById('root')

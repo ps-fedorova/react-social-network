@@ -4,6 +4,7 @@ import s from './ProfilePosts.module.css'
 
 const ProfilePosts = (props) => {
   const {ARR__POSTS} = props;
+
   return (
     <>
       <h2>My posts</h2>

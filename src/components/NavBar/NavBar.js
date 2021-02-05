@@ -9,6 +9,10 @@ const NavBar = () => {
       path: "/profile",
     },
     {
+      key: "Friends",
+      path: "/friends",
+    },
+    {
       key: "Messages",
       path: "/dialogs",
     },
