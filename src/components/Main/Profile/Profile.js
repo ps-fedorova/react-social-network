@@ -7,7 +7,7 @@ import s from "./Profile.module.css"
 const Profile = () => {
   return (
     <div>
-      <img className={s.profile__imgBg} src={forest} alt="forest"/>
+      {/*<img className={s.profile__imgBg} src={forest} alt="forest"/>*/}
       <div className={s.profile__content}>
         <div className={s.profile__info}>
           <IconAvatar profileAvatarClassName={s.profile__IconAvatar} profile={true}/>
