@@ -1,6 +1,8 @@
 .header {
   grid-area: header;
   padding: 10px 0;
+  border-bottom: rgba(255, 255, 255, .3) 1px solid;
+  height: 50px;
 }
 
 .header__content {

@@ -4,3 +4,6 @@
   max-height: 100px;
 }
 
+.profile__content {
+  margin: 0 15px;
+}

@@ -10,7 +10,7 @@ const NavBar = () => {
     },
     {
       key: "Messages",
-      path: "/messages",
+      path: "/dialogs",
     },
     {
       key: "Settings",
@@ -23,7 +23,7 @@ const NavBar = () => {
       <ul className="list">
         {NavBarItem.map((item, index) => {
           return (
-            <li key={index} className={s.navBar__item}>
+            <li key={index} className={`post__item ${s.navBar__item}`}>
               <button className="button">
                 <NavLink exact className="link" activeClassName="link_active"
                          to={item.path}>{item.key}</NavLink>

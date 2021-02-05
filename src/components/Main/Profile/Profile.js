@@ -1,17 +1,18 @@
 import React from 'react';
 import forest from "../../../images/forest.jpg";
-import avatar from "../../../images/avatar.jpg";
 import s from "./Profile.module.css"
-import MyPosts from "./MyPosts/MyPosts";
+import ProfilePosts from "./ProfilePosts/ProfilePosts";
 import IconAvatar from "../../../utils/ui-kit/IconAvatar/IconAvatar";
 
 const Profile = () => {
   return (
-    <div className={s.profile}>
+    <div>
       <img className={s.profile__imgBg} src={forest} alt="forest"/>
-      <p>description</p>
-      <IconAvatar/>
-      <MyPosts/>
+      <div className={s.profile__content}>
+        <p>description</p>
+        <IconAvatar/>
+        <ProfilePosts/>
+      </div>
     </div>
   )
 }

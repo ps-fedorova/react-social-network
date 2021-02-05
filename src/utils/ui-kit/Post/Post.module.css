@@ -1,0 +1,7 @@
+.post__item {
+  display: flex;
+}
+
+.post__text {
+  margin: auto 15px;
+}

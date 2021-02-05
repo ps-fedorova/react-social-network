@@ -1,6 +1,6 @@
 import React from 'react';
-import Post from './Post/Post'
-import './MyPosts.module.css'
+import ProfilePost from './ProfilePost/ProfilePost'
+import s from './ProfilePosts.module.css'
 
 const ARR__POSTS = [
   "Большие города",
@@ -14,14 +14,18 @@ const ARR__POSTS = [
 ];
 
 
-const MyPosts = () => {
+const ProfilePosts = () => {
 
   return (
     <>
       <h2>My posts</h2>
       <ul className="list">
         {ARR__POSTS.map((item, index) => {
-          return <Post key={index} item={item}/>
+          return (
+            <li className="post__item">
+              <ProfilePost key={index} item={item}/>
+            </li>
+          )
         })
         }
       </ul>
@@ -29,4 +33,4 @@ const MyPosts = () => {
   )
 }
 
-export default MyPosts
+export default ProfilePosts
