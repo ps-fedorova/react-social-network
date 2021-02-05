@@ -8,7 +8,7 @@ const ProfilePost = (props) => {
   const { item } = props;
   return (
     <div className={s.profilePost}>
-      <Post/>
+      <Post item={item}/>
       <Like/>
     </div>
   )

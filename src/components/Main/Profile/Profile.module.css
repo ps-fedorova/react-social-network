@@ -7,3 +7,15 @@
 .profile__content {
   margin: 0 15px;
 }
+
+.profile__info {
+  display: flex;
+  align-items: center;
+  padding: 15px 0 0;
+}
+
+.profile__IconAvatar {
+  width: 100px;
+  height: 100px;
+  margin-right: 5%;
+}

@@ -9,7 +9,7 @@ const Main = () => {
   return (
     <div className={s.main}>
       <Switch>
-        <Route exact path="/">
+        <Route exact path="/profile">
           <Profile/>
         </Route>
         <Route path="/dialogs">

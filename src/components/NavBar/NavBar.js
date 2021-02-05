@@ -6,7 +6,7 @@ const NavBar = () => {
   const NavBarItem = [
     {
       key: "Profile",
-      path: "/",
+      path: "/profile",
     },
     {
       key: "Messages",
@@ -25,7 +25,7 @@ const NavBar = () => {
           return (
             <li key={index} className={`post__item ${s.navBar__item}`}>
               <button className="button">
-                <NavLink exact className="link" activeClassName="link_active"
+                <NavLink className="link" activeClassName="link_active"
                          to={item.path}>{item.key}</NavLink>
               </button>
             </li>

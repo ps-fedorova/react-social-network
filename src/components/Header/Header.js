@@ -7,7 +7,7 @@ const Header = () => {
     <header className={s.header}>
       <div className={s.header__content}>
         <img className={s.header__img} src={logo} alt="logo"/>
-        <h1 className={s.header__title}>Социальная сеть</h1>
+        <h1 className={s.header__title}>Social network</h1>
       </div>
     </header>
   )
