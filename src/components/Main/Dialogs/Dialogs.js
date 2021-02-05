@@ -5,10 +5,11 @@ import DialogsList from "./DialogsList/DialogsList";
 import Messages from "./Messages/Messages";
 
 
-const Dialogs = () => {
+const Dialogs = (props) => {
+  const {ARR__NAME} = props;
   return (
     <div className={s.dialogs}>
-      <DialogsList/>
+      <DialogsList ARR__NAME={ARR__NAME}/>
       <Messages/>
     </div>
 

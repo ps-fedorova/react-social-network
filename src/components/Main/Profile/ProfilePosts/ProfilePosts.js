@@ -2,20 +2,8 @@ import React from 'react';
 import ProfilePost from './ProfilePost/ProfilePost'
 import s from './ProfilePosts.module.css'
 
-const ARR__POSTS = [
-  "Большие города",
-  "Пустые поезда",
-  "Ни берега, ни дна",
-  "Все начинать сначала",
-  "Холодная война",
-  "И время как вода",
-  "Он не сошел с ума",
-  "Ты ничего не знала",
-];
-
-
-const ProfilePosts = () => {
-
+const ProfilePosts = (props) => {
+  const {ARR__POSTS} = props;
   return (
     <>
       <h2>My posts</h2>

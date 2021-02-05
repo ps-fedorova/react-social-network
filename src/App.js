@@ -7,12 +7,13 @@ import Main from "./components/Main/Main"
 import NavBar from "./components/NavBar/NavBar";
 
 
-function App() {
+function App(props) {
+  const {ARR__POSTS, ARR__NAME} = props;
   return (
     <div className="app">
       <Header/>
       <NavBar/>
-      <Main/>
+      <Main ARR__POSTS={ARR__POSTS} ARR__NAME={ARR__NAME}/>
     </div>
   );
 }

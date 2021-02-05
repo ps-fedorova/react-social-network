@@ -4,7 +4,8 @@ import ProfilePosts from "./ProfilePosts/ProfilePosts";
 import IconAvatar from "../../../utils/ui-kit/IconAvatar/IconAvatar";
 import s from "./Profile.module.css"
 
-const Profile = () => {
+const Profile = (props) => {
+  const {ARR__POSTS} = props;
   return (
     <div>
       {/*<img className={s.profile__imgBg} src={forest} alt="forest"/>*/}
@@ -13,7 +14,7 @@ const Profile = () => {
           <IconAvatar profileAvatarClassName={s.profile__IconAvatar} profile={true}/>
           <p>description</p>
         </div>
-        <ProfilePosts/>
+        <ProfilePosts ARR__POSTS={ARR__POSTS}/>
       </div>
     </div>
   )

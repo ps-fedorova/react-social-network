@@ -5,10 +5,23 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+const ARR__POSTS = [
+  "Большие города",
+  "Пустые поезда",
+  "Ни берега, ни дна",
+  "Все начинать сначала",
+  "Холодная война",
+  "И время как вода",
+  "Он не сошел с ума",
+  "Ты ничего не знала",
+];
+
+const ARR__NAME = ["Лиза", "Лена", "Света", "Даша", "Саша"];
+
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
-      <App />
+      <App ARR__POSTS={ARR__POSTS} ARR__NAME={ARR__NAME}/>
     </BrowserRouter>
   </React.StrictMode>,
   document.getElementById('root')
