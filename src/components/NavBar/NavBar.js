@@ -2,30 +2,12 @@ import React from 'react';
 import s from './NavBar.module.css'
 import { NavLink } from "react-router-dom";
 
-const NavBar = () => {
-  const NavBarItem = [
-    {
-      key: "Profile",
-      path: "/profile",
-    },
-    {
-      key: "Friends",
-      path: "/friends",
-    },
-    {
-      key: "Messages",
-      path: "/dialogs",
-    },
-    {
-      key: "Settings",
-      path: "/settings",
-    },
-  ]
-
+const NavBar = (props) => {
+  const { ARR__NAVBAR } = props.state.navBar
   return (
     <nav className={s.navBar}>
       <ul className="list">
-        {NavBarItem.map((item, index) => {
+        {ARR__NAVBAR.map((item, index) => {
           return (
             <li key={index} className={`post__item ${s.navBar__item}`}>
               <button className="button">

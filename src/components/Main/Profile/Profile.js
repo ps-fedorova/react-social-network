@@ -6,6 +6,7 @@ import s from "./Profile.module.css"
 
 const Profile = (props) => {
   const { ARR__POSTS } = props.profile;
+  const { addPost } = props;
   return (
     <div>
       {/*<img className={s.profile__imgBg} src={forest} alt="forest"/>*/}
@@ -14,7 +15,7 @@ const Profile = (props) => {
           <IconAvatar profileAvatarClassName={s.profile__IconAvatar} profile={true}/>
           <p>Полина</p>
         </div>
-        <ProfilePosts ARR__POSTS={ARR__POSTS}/>
+        <ProfilePosts ARR__POSTS={ARR__POSTS} addPost={addPost}/>
       </div>
     </div>
   )

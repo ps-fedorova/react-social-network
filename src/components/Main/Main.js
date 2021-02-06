@@ -5,12 +5,13 @@ import Profile from "./Profile/Profile";
 import Dialogs from "./Dialogs/Dialogs";
 
 const Main = (props) => {
-  const {profile, dialogs} = props.state;
+  const { profile, dialogs } = props.state;
+  const { addPost } = props;
   return (
     <div className={s.main}>
       <Switch>
         <Route exact path="/profile">
-          <Profile profile={profile}/>
+          <Profile addPost={addPost} profile={profile}/>
         </Route>
         <Route path="/dialogs">
           <Dialogs dialogs={dialogs}/>

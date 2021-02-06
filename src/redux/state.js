@@ -1,3 +1,5 @@
+import { rerenderEntreeTree } from "../render"
+
 const state = {
   dialogs: {
     ARR__NAME: ["Лиза", "Лена", "Света", "Даша", "Саша"],
@@ -5,16 +7,58 @@ const state = {
   },
   profile: {
     ARR__POSTS: [
-      "Большие города",
-      "Пустые поезда",
-      "Ни берега, ни дна",
-      "Все начинать сначала",
-      "Холодная война",
-      "И время как вода",
-      "Он не сошел с ума",
-      "Ты ничего не знала",
+      {
+        message: "Большие города"
+      },
+      {
+        message: "Пустые поезда"
+      },
+      {
+        message: "Ни берега, ни дна"
+      },
+      {
+        message: "Все начинать сначала"
+      },
+      // {
+      //   message: "Холодная война"
+      // },
+      // {
+      //   message: "И время как вода"
+      // },
+      // {
+      //   message: "Он не сошел с ума"
+      // },
+      // {
+      //   message: "Ты ничего не знала"
+      // },
     ],
+  },
+  navBar: {
+    ARR__NAVBAR: [
+      {
+        key: "Profile",
+        path: "/profile",
+      },
+      {
+        key: "Messages",
+        path: "/dialogs",
+      },
+      {
+        key: "Friends",
+        path: "/friends",
+      },
+      {
+        key: "Settings",
+        path: "/settings",
+      },
+    ]
   }
 }
 
 export default state;
+
+export const addPost = (postMessage) => {
+  const newPost = { message: postMessage }
+  state.profile.ARR__POSTS.push(newPost);
+  rerenderEntreeTree(state);
+}
