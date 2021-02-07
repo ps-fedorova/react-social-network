@@ -14,7 +14,7 @@ const Messages = (props) => {
     addMessage();
   }
 
-  const onChangeTextArea = () =>  {
+  const onChangeTextArea = () => {
     const text = refTextarea.current.value
     updateNewPostMessage(text);
   }
@@ -24,7 +24,7 @@ const Messages = (props) => {
       <ul className={`list ${s.messages__list}`}>
         {ARR__MESSAGES.map((message, index) => {
           return (
-            <li key={index} className="post__item">
+            <li key={index} className={`post__item ${s.messages__item}`}>
               <Post item={message}/>
             </li>)
         })

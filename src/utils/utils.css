@@ -5,6 +5,7 @@
 
   --box-shadow: 0 3px 8px 0 rgba(0, 0, 0, .5);
   --font: 14px 1.15 Arial;
+  --height-content: calc(100vh - 91px);
 }
 
 .link, .button {
@@ -40,8 +41,13 @@
 }
 
 .post__item {
+  box-sizing: border-box;
   box-shadow: var(--box-shadow);
   margin: 5px 0;
+}
+
+.post__item:first-child {
+  margin: 0;
 }
 
 .input, .textarea {
@@ -54,4 +60,5 @@
 }
 
 .label {
+  border-radius: 8px;
 }

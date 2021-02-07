@@ -1,5 +1,5 @@
 .dialogsList {
-  padding: 5px 10px;
+  padding: 10px;
   border-right: rgba(255, 255, 255, .3) 1px solid;
-  min-height: calc(100vh - 81px);
+  height: var(--height-content);
 }

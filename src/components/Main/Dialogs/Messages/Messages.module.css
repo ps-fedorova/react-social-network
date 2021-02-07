@@ -1,11 +1,36 @@
 .messages {
-  padding: 5px 10px;
   display: flex;
   flex-direction: column;
+  height: calc(100vh - 71px);
+  padding: 0;
 }
 
 .messages__list {
+  margin: 0;
+  padding-top: 10px;
+  padding-left: 10px;
   flex-grow: 1;
+  overflow-y: scroll;
+}
+
+.messages__item {
+  width: calc(100% - 5px);
+}
+
+.messages__list::-webkit-scrollbar {
+  width: 10px;
+}
+
+.messages__list::-webkit-scrollbar-track {
+  margin-bottom: 5px;
+  margin-top: 10px;
+}
+
+.messages__list::-webkit-scrollbar-thumb {
+  background-color: var(--rootBackgroundSecond);
+  /*outline: 1px solid var(--rootBackground);*/
+  border-radius: 5px;
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
 }
 
 .messages__formSent {
@@ -14,6 +39,7 @@
   box-sizing: border-box;
   border: none;
   border-radius: 8px;
+  margin: 0 10px;
 }
 
 .messages__textarea {
