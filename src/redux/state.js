@@ -6,7 +6,7 @@ const state = {
     ARR__MESSAGES: ["Полковнику никто", "Не пишет", "Полковника никто", "Не ждёт"],
   },
   profile: {
-    ARR__POSTS: [
+    ARR_POSTS: [
       {
         message: "Большие города"
       },
@@ -32,6 +32,7 @@ const state = {
       //   message: "Ты ничего не знала"
       // },
     ],
+    NEW_POST_TEXT: ""
   },
   navBar: {
     ARR__NAVBAR: [
@@ -57,8 +58,17 @@ const state = {
 
 export default state;
 
-export const addPost = (postMessage) => {
-  const newPost = { message: postMessage }
-  state.profile.ARR__POSTS.push(newPost);
+export const updateNewPostText = (newText) => {
+  state.profile.NEW_POST_TEXT = newText;
+  rerenderEntreeTree(state);
+}
+
+export const addPost = () => {
+  const newPost = {
+    message: state.profile.NEW_POST_TEXT
+  }
+
+  state.profile.ARR_POSTS.push(newPost);
+  updateNewPostText('');
   rerenderEntreeTree(state);
 }

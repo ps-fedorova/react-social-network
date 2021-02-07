@@ -12,7 +12,6 @@ const Dialogs = (props) => {
       <DialogsList ARR__NAME={ARR__NAME}/>
       <Messages ARR__MESSAGES={ARR__MESSAGES}/>
     </div>
-
   )
 }
 
