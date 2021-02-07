@@ -1,3 +1,4 @@
+import './utils/normalize.css';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
 import state from './redux/state';

@@ -1,3 +1,40 @@
-.dialogsList {
+.messages {
   padding: 5px 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.messages__list {
+  flex-grow: 1;
+}
+
+.messages__formSent {
+  background-color: var(--rootText);
+  color: var(--rootBackground);
+  box-sizing: border-box;
+  border: none;
+  border-radius: 8px;
+}
+
+.messages__textarea {
+  width: 100%;
+  padding: 8px 15px;
+  resize: none;
+  background-color: var(--rootText);
+  color: var(--rootBackground);
+}
+
+.messages__ButtonsPosition {
+  display: flex;
+  justify-content: flex-end;
+  padding: 10px;
+  background-color: var(--rootBackgroundSecond);
+  border-radius: 0 0 7px 7px;
+}
+
+.messages__ButtonFormSent {
+  box-shadow: var(--box-shadow);
+  padding: 10px 20px 13px;
+  background-color: var(--rootBackground);
+  color: var(--rootText);
 }

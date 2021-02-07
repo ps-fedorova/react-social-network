@@ -9,10 +9,7 @@ const ProfilePosts = (props) => {
 
   const addPostLocal = (evt) => {
     evt.preventDefault();
-    // const text = newPostElement.current.value; - перенесено в бизнес
     addPost();
-    // newPostElement.current.value = '';
-    // updateNewPostText('')
   }
 
   const onChangeNewPostText = () => {
@@ -25,8 +22,8 @@ const ProfilePosts = (props) => {
       <h2>My posts</h2>
       <div>
         <form className={`list ${s.profilePosts__form}`}>
-          <label className={`${s.profilePosts__label}`} htmlFor="post">
-            <input ref={newPostElement} className={s.profilePosts__input} id="post" value={profile.NEW_POST_TEXT}
+          <label className={`label ${s.profilePosts__label}`} htmlFor="post">
+            <input ref={newPostElement} className={`input ${s.profilePosts__input}`} id="post" value={profile.NEW_POST_TEXT}
                    onChange={onChangeNewPostText}/>
           </label>
           <button onClick={addPostLocal} className={`button post__item ${s.profilePosts__button}`}>add</button>

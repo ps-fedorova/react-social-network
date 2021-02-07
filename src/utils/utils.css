@@ -1,5 +1,10 @@
 :root {
-  --box-shadow: 0 3px 8px 0 rgba(0,0,0,.5);
+  --rootText: #ffffff;
+  --rootBackground: #1c1c1c;
+  --rootBackgroundSecond: #5d5d5d;
+
+  --box-shadow: 0 3px 8px 0 rgba(0, 0, 0, .5);
+  --font: 14px 1.15 Arial;
 }
 
 .link, .button {
@@ -16,10 +21,12 @@
   text-decoration: none;
   opacity: .8;
 }
+
 .link_active {
   font-weight: bold;
   opacity: 1;
 }
+
 .button:hover {
   position: relative;
   opacity: 1;
@@ -35,4 +42,16 @@
 .post__item {
   box-shadow: var(--box-shadow);
   margin: 5px 0;
+}
+
+.input, .textarea {
+  color: inherit;
+  background-color: transparent;
+  box-sizing: border-box;
+  border: none;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.label {
 }

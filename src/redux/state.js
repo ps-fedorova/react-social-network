@@ -4,6 +4,7 @@ const state = {
   dialogs: {
     ARR__NAME: ["Лиза", "Лена", "Света", "Даша", "Саша"],
     ARR__MESSAGES: ["Полковнику никто", "Не пишет", "Полковника никто", "Не ждёт"],
+    NEW_MESSAGE_TEXT: ""
   },
   profile: {
     ARR_POSTS: [
@@ -58,6 +59,7 @@ const state = {
 
 export default state;
 
+/////////////Post/////////////
 export const updateNewPostText = (newText) => {
   state.profile.NEW_POST_TEXT = newText;
   rerenderEntreeTree(state);
@@ -69,6 +71,19 @@ export const addPost = () => {
   }
 
   state.profile.ARR_POSTS.push(newPost);
+  updateNewPostText('');
+  rerenderEntreeTree(state);
+}
+/////////////Message/////////////
+export const updateNewPostMessage = (newText) => {
+  state.dialogs.NEW_MESSAGE_TEXT = newText;
+  rerenderEntreeTree(state);
+}
+
+export const addMessage = () => {
+  const newMessage = state.dialogs.NEW_MESSAGE_TEXT;
+
+  state.dialogs.ARR__MESSAGES.push(newMessage);
   updateNewPostText('');
   rerenderEntreeTree(state);
 }

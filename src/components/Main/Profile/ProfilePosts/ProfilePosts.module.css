@@ -1,11 +1,10 @@
 .profilePosts__form {
   display: flex;
   align-items: center;
-
 }
 
 .profilePosts__button {
-  padding: 10px 20px;
+  padding: 10px 20px 13px;
   margin-left: 10px;
   margin-right: 10px;
 }
@@ -17,6 +16,8 @@
 }
 
 .profilePosts__input {
-  width: calc(100% - 20px);
-  padding: 10px;
+  width: 100%;
+  padding: 10px 15px 13px;
+  background-color: var(--rootText);
+  color: var(--rootBackground) ;
 }
