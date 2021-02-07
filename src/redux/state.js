@@ -1,5 +1,3 @@
-import { rerenderEntreeTree } from "../render"
-
 const state = {
   dialogs: {
     ARR__NAME: ["Лиза", "Лена", "Света", "Даша", "Саша"],
@@ -59,6 +57,8 @@ const state = {
 
 export default state;
 
+let rerenderEntreeTree = () => {};
+
 /////////////Post/////////////
 export const updateNewPostText = (newText) => {
   state.profile.NEW_POST_TEXT = newText;
@@ -86,4 +86,8 @@ export const addMessage = () => {
   state.dialogs.ARR__MESSAGES.push(newMessage);
   updateNewPostText('');
   rerenderEntreeTree(state);
+}
+
+export const subscribe = (observer) => {
+  rerenderEntreeTree = observer;
 }
