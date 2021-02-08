@@ -1,5 +1,5 @@
 import React from 'react';
-import forest from "../../../images/forest.jpg";
+// import forest from "../../../images/forest.jpg";
 import ProfilePosts from "./ProfilePosts/ProfilePosts";
 import IconAvatar from "../../../utils/ui-kit/IconAvatar/IconAvatar";
 import s from "./Profile.module.css"

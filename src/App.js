@@ -6,14 +6,14 @@ import Main from "./components/Main/Main"
 import NavBar from "./components/NavBar/NavBar";
 
 function App(props) {
-  const { state, updateNewPostText, addPost, updateNewPostMessage, addMessage} = props;
+  const { store, updateNewPostText, addPost, updateNewPostMessage, addMessage } = props;
   return (
     <div className="app">
       <Header/>
-      <NavBar navBar={state.navBar}/>
+      <NavBar navBar={store.navBar}/>
       <Main
-        profile={state.profile}
-        dialogs={state.dialogs}
+        profile={store.profile}
+        dialogs={store.dialogs}
         updateNewPostText={updateNewPostText}
         addPost={addPost}
         updateNewPostMessage={updateNewPostMessage}
