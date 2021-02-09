@@ -8,15 +8,13 @@ import { ADD_MESSAGE_actionCreator, UPDATE_NEW_MESSAGE_actionCreator } from "../
 const Messages = (props) => {
   const { ARR__MESSAGES, NEW_MESSAGE_TEXT, dispatch } = props;
 
-  const refTextarea = React.createRef();
-
   const onSent = (evt) => {
     evt.preventDefault()
     dispatch(ADD_MESSAGE_actionCreator())
   }
 
-  const onChangeTextArea = () => {
-    const text = refTextarea.current.value
+  const onChangeTextArea = (evt) => {
+    const text = evt.target.value
     dispatch(UPDATE_NEW_MESSAGE_actionCreator(text));
   }
 
@@ -34,7 +32,6 @@ const Messages = (props) => {
       <form className={s.messages__formSent}>
         <label className={`label`}>
           <textarea
-            ref={refTextarea}
             className={`textarea ${s.messages__textarea}`}
             rows="5"
             value={NEW_MESSAGE_TEXT}
