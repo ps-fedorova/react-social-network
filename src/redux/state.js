@@ -1,3 +1,8 @@
+const ADD_MESSAGE = "ADD-MESSAGE";
+const UPDATE_NEW_MESSAGE = "UPDATE-NEW-POST-MESSAGE";
+const ADD_POST = "ADD-POST";
+const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT';
+
 export const store = {
   _state: {
     dialogs: {
@@ -66,21 +71,21 @@ export const store = {
   }, // подписаться на ф. перерисовки
 
   dispatch(action) {
-    if (action.type === 'UPDATE-NEW-POST-TEXT') {
+    if (action.type === UPDATE_NEW_POST_TEXT) {
       this._state.profile.NEW_POST_TEXT = action.newText;
       this._callSubscriber(this._state);
 
-    } else if (action.type === 'ADD-POST') {
+    } else if (action.type === ADD_POST) {
       const newPost = { message: this._state.profile.NEW_POST_TEXT }
       this._state.profile.ARR_POSTS.push(newPost);
       this._state.profile.NEW_POST_TEXT = '';
       this._callSubscriber(this._state);
 
-    } else if (action.type === 'UPDATE-NEW-POST-MESSAGE') {
+    } else if (action.type === UPDATE_NEW_MESSAGE) {
       this._state.dialogs.NEW_MESSAGE_TEXT = action.newText;
       this._callSubscriber(this._state);
 
-    } else if (action.type === 'ADD-MESSAGE') {
+    } else if (action.type === ADD_MESSAGE) {
       let newMessage = this._state.dialogs.NEW_MESSAGE_TEXT;
       this._state.dialogs.ARR__MESSAGES.push(newMessage);
       this._state.dialogs.NEW_MESSAGE_TEXT = '';
@@ -88,5 +93,19 @@ export const store = {
     }
   },
 }
+
+export const ADD_MESSAGE_actionCreator = () => ({ type: ADD_MESSAGE });
+export const UPDATE_NEW_MESSAGE_actionCreator = (text) => (
+  {
+    type: UPDATE_NEW_MESSAGE,
+    newText: text,
+  }
+)
+export const UPDATE_NEW_POST_actionCreator = (text) => ({
+  type: UPDATE_NEW_POST_TEXT,
+  newText: text,
+});
+export const ADD_POST_actionCreator = () => ({ type: ADD_POST });
+
 
 window.store = store;

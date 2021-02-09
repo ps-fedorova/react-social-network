@@ -2,6 +2,7 @@ import React from 'react';
 
 import s from "./Messages.module.css"
 import Post from "../../../../utils/ui-kit/Post/Post";
+import { ADD_MESSAGE_actionCreator, UPDATE_NEW_MESSAGE_actionCreator } from "../../../../redux/state";
 
 
 const Messages = (props) => {
@@ -11,19 +12,12 @@ const Messages = (props) => {
 
   const onSent = (evt) => {
     evt.preventDefault()
-    const action = {
-      type: "ADD-MESSAGE"
-    };
-    dispatch(action)
+    dispatch(ADD_MESSAGE_actionCreator())
   }
 
   const onChangeTextArea = () => {
     const text = refTextarea.current.value
-    const action = {
-      type: "UPDATE-NEW-POST-MESSAGE",
-      newText: text
-    };
-    dispatch(action);
+    dispatch(UPDATE_NEW_MESSAGE_actionCreator(text));
   }
 
   return (

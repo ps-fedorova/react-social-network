@@ -1,6 +1,7 @@
 import React from 'react';
 import ProfilePost from './ProfilePost/ProfilePost'
 import s from './ProfilePosts.module.css'
+import { ADD_POST_actionCreator, UPDATE_NEW_POST_actionCreator } from "../../../../redux/state";
 
 const ProfilePosts = (props) => {
   const { profile, dispatch } = props;
@@ -9,19 +10,12 @@ const ProfilePosts = (props) => {
 
   const onChangeNewPostText = () => {
     const text = newPostElement.current.value;
-    const action = {
-      type: 'UPDATE-NEW-POST-TEXT',
-      newText: text,
-    };
-    dispatch(action);
+    dispatch(UPDATE_NEW_POST_actionCreator(text));
   }
 
   const addPostLocal = (evt) => {
     evt.preventDefault();
-    const action = {
-      type: "ADD-POST"
-    };
-    dispatch(action);
+    dispatch(ADD_POST_actionCreator());
   }
 
   return (
