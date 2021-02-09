@@ -5,18 +5,25 @@ import Post from "../../../../utils/ui-kit/Post/Post";
 
 
 const Messages = (props) => {
-  const { ARR__MESSAGES, NEW_MESSAGE_TEXT, updateNewPostMessage, addMessage } = props;
+  const { ARR__MESSAGES, NEW_MESSAGE_TEXT, dispatch } = props;
 
   const refTextarea = React.createRef();
 
   const onSent = (evt) => {
     evt.preventDefault()
-    addMessage();
+    const action = {
+      type: "ADD-MESSAGE"
+    };
+    dispatch(action)
   }
 
   const onChangeTextArea = () => {
     const text = refTextarea.current.value
-    updateNewPostMessage(text);
+    const action = {
+      type: "UPDATE-NEW-POST-MESSAGE",
+      newText: text
+    };
+    dispatch(action);
   }
 
   return (

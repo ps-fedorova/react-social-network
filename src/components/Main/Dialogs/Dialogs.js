@@ -7,7 +7,7 @@ import Messages from "./Messages/Messages";
 
 const Dialogs = (props) => {
   const {ARR__NAME, ARR__MESSAGES, NEW_MESSAGE_TEXT} = props.dialogs;
-  const {updateNewPostMessage, addMessage} = props;
+  const {dispatch} = props;
 
   return (
     <div className={s.dialogs}>
@@ -15,8 +15,7 @@ const Dialogs = (props) => {
       <Messages
         ARR__MESSAGES={ARR__MESSAGES}
         NEW_MESSAGE_TEXT={NEW_MESSAGE_TEXT}
-        updateNewPostMessage={updateNewPostMessage}
-        addMessage={addMessage}
+        dispatch={dispatch}
       />
     </div>
   )

@@ -3,18 +3,25 @@ import ProfilePost from './ProfilePost/ProfilePost'
 import s from './ProfilePosts.module.css'
 
 const ProfilePosts = (props) => {
-  const { profile, addPost, updateNewPostText } = props;
+  const { profile, dispatch } = props;
 
   const newPostElement = React.createRef();
 
-  const addPostLocal = (evt) => {
-    evt.preventDefault();
-    addPost();
-  }
-
   const onChangeNewPostText = () => {
     const text = newPostElement.current.value;
-    updateNewPostText(text)
+    const action = {
+      type: 'UPDATE-NEW-POST-TEXT',
+      newText: text,
+    };
+    dispatch(action);
+  }
+
+  const addPostLocal = (evt) => {
+    evt.preventDefault();
+    const action = {
+      type: "ADD-POST"
+    };
+    dispatch(action);
   }
 
   return (

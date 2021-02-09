@@ -5,7 +5,7 @@ import IconAvatar from "../../../utils/ui-kit/IconAvatar/IconAvatar";
 import s from "./Profile.module.css"
 
 const Profile = (props) => {
-  const { addPost, updateNewPostText, profile } = props;
+  const { profile, dispatch } = props;
   return (
     <div>
       {/*<img className={s.profile__imgBg} src={forest} alt="forest"/>*/}
@@ -14,7 +14,7 @@ const Profile = (props) => {
           <IconAvatar profileAvatarClassName={s.profile__IconAvatar} profile={true}/>
           <p>Полина</p>
         </div>
-        <ProfilePosts profile={profile} addPost={addPost} updateNewPostText={updateNewPostText}/>
+        <ProfilePosts profile={profile} dispatch={dispatch}/>
       </div>
     </div>
   )
