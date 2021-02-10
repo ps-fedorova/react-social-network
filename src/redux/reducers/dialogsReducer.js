@@ -1,7 +1,13 @@
 const ADD_MESSAGE = "ADD-MESSAGE";
 const UPDATE_NEW_MESSAGE = "UPDATE-NEW-POST-MESSAGE";
 
-const dialogsReducer = (state, action) => {
+const initialState = {
+  ARR__NAME: ["Лиза", "Лена", "Света", "Даша", "Саша"],
+  ARR__MESSAGES: ["Полковнику никто", "Не пишет", "Полковника никто", "Не ждёт"],
+  NEW_MESSAGE_TEXT: ""
+};
+
+const dialogsReducer = (state = initialState, action) => {
   switch (action.type) {
     case UPDATE_NEW_MESSAGE:
       state.NEW_MESSAGE_TEXT = action.newText;

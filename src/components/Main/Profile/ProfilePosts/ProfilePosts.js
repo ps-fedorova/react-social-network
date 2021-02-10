@@ -1,7 +1,7 @@
 import React from 'react';
 import ProfilePost from './ProfilePost/ProfilePost'
 import s from './ProfilePosts.module.css'
-import { ADD_POST_actionCreator, UPDATE_NEW_POST_actionCreator } from "../../../../redux/profileReducer";
+import { ADD_POST_actionCreator, UPDATE_NEW_POST_actionCreator } from "../../../../redux/reducers/profileReducer";
 
 const ProfilePosts = (props) => {
   const { profile, dispatch } = props;

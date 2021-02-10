@@ -1,6 +1,6 @@
-import profileReducer from "./profileReducer";
-import dialogsReducer from "./dialogsReducer";
-import sideBarReducer from "./sideBarReducer";
+import profileReducer from "./reducers/profileReducer";
+import dialogsReducer from "./reducers/dialogsReducer";
+import sideBarReducer from "./reducers/sideBarReducer";
 
 export const store = {
   _state: {
@@ -39,43 +39,21 @@ export const store = {
       NEW_MESSAGE_TEXT: ""
     },
     sideBar: {},
-    navBar: {
-      ARR__NAVBAR: [
-        {
-          key: "Profile",
-          path: "/profile",
-        },
-        {
-          key: "Messages",
-          path: "/dialogs",
-        },
-        {
-          key: "Friends",
-          path: "/friends",
-        },
-        {
-          key: "Settings",
-          path: "/settings",
-        },
-      ]
-    }
   },
   _callSubscriber() {
   },
-
-  getState() {
-    return this._state
-  }, // получить стейт
-  subscribe(observer) {
-    this._callSubscriber = observer;
-  }, // подписаться на ф. перерисовки
-
   dispatch(action) {
     this._state.profile = profileReducer(this._state.profile, action);
     this._state.dialogs = dialogsReducer(this._state.dialogs, action);
     this._state.sideBar = sideBarReducer(this._state.sideBar, action);
     this._callSubscriber(this._state);
   },
+  subscribe(observer) {
+    this._callSubscriber = observer;
+  }, // подписаться на ф. перерисовки
+  getState() {
+    return this._state
+  }, // получить стейт
 }
 
 window.store = store;

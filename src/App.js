@@ -10,7 +10,7 @@ function App(props) {
   return (
     <div className="app">
       <Header/>
-      <NavBar navBar={state.navBar}/>
+      <NavBar/>
       <Main
         profile={state.profile}
         dialogs={state.dialogs}

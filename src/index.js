@@ -5,7 +5,8 @@ import './utils/normalize.css';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
 import App from "./App";
-import { store } from './redux/state';
+// import { store } from './redux/store';
+import store from './redux/reduxStore';
 
 const rerenderEntreeTree = (state) => {
   ReactDOM.render(
@@ -22,9 +23,12 @@ const rerenderEntreeTree = (state) => {
 }
 
 rerenderEntreeTree(store.getState()); // первая отрисовка
-store.subscribe(rerenderEntreeTree); // отрисовка при изменении стейта
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
+// store.subscribe(rerenderEntreeTree); // отрисовка при изменении стейта
+
+store.subscribe(() => { // отрисовка при изменении стейта
+  let state = store.getState();
+  rerenderEntreeTree(state);
+});
+
 reportWebVitals();

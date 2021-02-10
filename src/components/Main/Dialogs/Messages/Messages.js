@@ -2,7 +2,7 @@ import React from 'react';
 
 import s from "./Messages.module.css"
 import Post from "../../../../utils/ui-kit/Post/Post";
-import { ADD_MESSAGE_actionCreator, UPDATE_NEW_MESSAGE_actionCreator } from "../../../../redux/dialogsReducer";
+import { ADD_MESSAGE_actionCreator, UPDATE_NEW_MESSAGE_actionCreator } from "../../../../redux/reducers/dialogsReducer";
 
 
 const Messages = (props) => {
