@@ -1,5 +1,4 @@
-const ADD_MESSAGE = "ADD-MESSAGE";
-const UPDATE_NEW_MESSAGE = "UPDATE-NEW-POST-MESSAGE";
+import { ADD_MESSAGE, UPDATE_NEW_MESSAGE } from "../types";
 
 const initialState = {
   ARR__NAME: ["Лиза", "Лена", "Света", "Даша", "Саша"],

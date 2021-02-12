@@ -1,5 +1,4 @@
-const ADD_POST = "ADD-POST";
-const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT';
+import { ADD_POST, UPDATE_NEW_POST_TEXT } from "../types";
 
 const initialState = {
   ARR_POSTS: [
