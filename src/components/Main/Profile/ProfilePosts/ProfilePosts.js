@@ -1,21 +1,20 @@
 import React from 'react';
 import ProfilePost from './ProfilePost/ProfilePost'
 import s from './ProfilePosts.module.css'
-import { ADD_POST_actionCreator, UPDATE_NEW_POST_actionCreator } from "../../../../redux/reducers/profileReducer";
 
 const ProfilePosts = (props) => {
-  const { profile, dispatch } = props;
+  const { profile, updateNewPostText, addPost } = props;
 
   const newPostElement = React.createRef();
 
   const onChangeNewPostText = () => {
     const text = newPostElement.current.value;
-    dispatch(UPDATE_NEW_POST_actionCreator(text));
+    updateNewPostText(text)
   }
 
-  const addPostLocal = (evt) => {
+  const onAddPost = (evt) => {
     evt.preventDefault();
-    dispatch(ADD_POST_actionCreator());
+    addPost();
   }
 
   return (
@@ -24,10 +23,11 @@ const ProfilePosts = (props) => {
       <div>
         <form className={`list ${s.profilePosts__form}`}>
           <label className={`label ${s.profilePosts__label}`} htmlFor="post">
-            <input ref={newPostElement} className={`input ${s.profilePosts__input}`} id="post" value={profile.NEW_POST_TEXT}
+            <input ref={newPostElement} className={`input ${s.profilePosts__input}`} id="post"
+                   value={profile.NEW_POST_TEXT}
                    onChange={onChangeNewPostText}/>
           </label>
-          <button onClick={addPostLocal} className={`button post__item ${s.profilePosts__button}`}>add</button>
+          <button onClick={onAddPost} className={`button post__item ${s.profilePosts__button}`}>add</button>
         </form>
       </div>
       <ul className="list">

@@ -30,6 +30,9 @@ const initialState = {
   NEW_POST_TEXT: ""
 };
 
+// Первый экшин диспачится при загрузке страницы (это логика из коробки redux).
+// Если state не определен, то редьюсер profileReducer возвращает undefined во время инициализации, а это ошибка
+
 const profileReducer = (state = initialState, action) => {
   switch (action.type) {
     case UPDATE_NEW_POST_TEXT:

@@ -6,16 +6,12 @@ import Main from "./components/Main/Main"
 import NavBar from "./components/NavBar/NavBar";
 
 function App(props) {
-  const { state, dispatch } = props;
+  const { store } = props;
   return (
     <div className="app">
       <Header/>
       <NavBar/>
-      <Main
-        profile={state.profile}
-        dialogs={state.dialogs}
-        dispatch={dispatch}
-      />
+      <Main store={store}/>
     </div>
   );
 }

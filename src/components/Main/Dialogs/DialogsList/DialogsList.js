@@ -1,14 +1,13 @@
 import React from 'react';
 import s from "./DialogsList.module.css"
-
 import Post from "../../../../utils/ui-kit/Post/Post";
 import { NavLink } from "react-router-dom";
 
 const DialogsList = (props) => {
-const {ARR__NAME} = props;
+  const { dialogs } = props;
   return (
     <ul className={`list ${s.dialogsList}`}>
-      {ARR__NAME.map((nameContact, index) => {
+      {dialogs.ARR__NAME.map((nameContact, index) => {
         return (
           <li key={index} className="post__item">
             <NavLink to={`/dialogs/${index}`} className="link" activeClassName="link_active">

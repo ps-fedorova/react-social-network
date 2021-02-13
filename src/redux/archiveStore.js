@@ -2,7 +2,7 @@ import profileReducer from "./reducers/profileReducer";
 import dialogsReducer from "./reducers/dialogsReducer";
 import sideBarReducer from "./reducers/sideBarReducer";
 
-export const store = {
+export const archiveStore = {
   _state: {
     profile: {
       ARR_POSTS: [
@@ -56,4 +56,4 @@ export const store = {
   }, // получить стейт
 }
 
-window.store = store;
+window.store = archiveStore;

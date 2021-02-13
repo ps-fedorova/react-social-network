@@ -5,7 +5,7 @@ import './utils/normalize.css';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
 import App from "./App";
-// import { store } from './redux/store';
+// import { archiveStore } from './redux/archiveStore';
 import store from './redux/reduxStore';
 
 const rerenderEntreeTree = (state) => {
@@ -13,6 +13,7 @@ const rerenderEntreeTree = (state) => {
     <React.StrictMode>
       <BrowserRouter>
         <App
+          store={store}
           state={state}
           dispatch={store.dispatch.bind(store)}
         />
@@ -24,8 +25,13 @@ const rerenderEntreeTree = (state) => {
 
 rerenderEntreeTree(store.getState()); // первая отрисовка
 
-// store.subscribe(rerenderEntreeTree); // отрисовка при изменении стейта
+// archiveStore.subscribe(rerenderEntreeTree); // отрисовка при изменении стейта
+// - подобное с редаксовским стором не сработает!
 
+// редаксовский стор, когда уведомляет подписчиков, не передает им стейт
+// задача метода subscribe просто уведомить
+
+// каждый раз, когда стейт меняется, нам нужно руками запрашивать его у стора
 store.subscribe(() => { // отрисовка при изменении стейта
   let state = store.getState();
   rerenderEntreeTree(state);
