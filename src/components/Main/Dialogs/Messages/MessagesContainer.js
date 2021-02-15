@@ -2,10 +2,11 @@ import React from 'react';
 
 import { ADD_MESSAGE_actionCreator, UPDATE_NEW_MESSAGE_actionCreator } from "../../../../redux/reducers/dialogsReducer";
 import Messages from "./Messages";
+import { StoreContext } from "../../../../StoreContext";
 
 
-const MessagesContainer = (props) => {
-  const { store } = props;
+const MessagesContainer = () => {
+  const store = React.useContext(StoreContext)
 
   const state = store.getState()
   const sent = () => store.dispatch(ADD_MESSAGE_actionCreator());

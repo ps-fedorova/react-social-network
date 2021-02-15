@@ -5,13 +5,12 @@ import Header from "./components/Header/Header";
 import Main from "./components/Main/Main"
 import NavBar from "./components/NavBar/NavBar";
 
-function App(props) {
-  const { store } = props;
+function App() {
   return (
     <div className="app">
       <Header/>
       <NavBar/>
-      <Main store={store}/>
+      <Main/>
     </div>
   );
 }

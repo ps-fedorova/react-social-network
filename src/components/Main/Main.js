@@ -4,17 +4,15 @@ import s from "./Main.module.css"
 import Profile from "./Profile/Profile";
 import Dialogs from "./Dialogs/Dialogs";
 
-const Main = (props) => {
-  const { store } = props;
-
+const Main = () => {
   return (
     <div className={s.main}>
       <Switch>
         <Route exact path="/profile">
-          <Profile store={store}/>
+          <Profile/>
         </Route>
         <Route path="/dialogs">
-          <Dialogs store={store}/>
+          <Dialogs/>
         </Route>
       </Switch>
     </div>
