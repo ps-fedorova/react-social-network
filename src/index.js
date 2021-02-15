@@ -7,7 +7,7 @@ import reportWebVitals from './reportWebVitals';
 import App from "./App";
 // import { archiveStore } from './redux/archiveStore';
 import store from './redux/reduxStore';
-import { Provider } from "./StoreContext";
+import { Provider } from "react-redux";
 
 const rerenderEntreeTree = () => {
   ReactDOM.render(

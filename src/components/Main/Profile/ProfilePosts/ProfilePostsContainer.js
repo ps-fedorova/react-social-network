@@ -1,30 +1,28 @@
 import React from 'react';
 import { ADD_POST_actionCreator, UPDATE_NEW_POST_actionCreator } from "../../../../redux/reducers/profileReducer";
 import ProfilePosts from "./ProfilePosts";
-import { StoreContext } from "../../../../StoreContext";
+import { connect } from "react-redux";
 
-const ProfilePostsContainer = () => {
-
-  const store = React.useContext(StoreContext)
-
-  const state = store.getState()
-
-  const
-  updateNewPostText = (text) => {
-    const action = UPDATE_NEW_POST_actionCreator(text)
-    store.dispatch(action); // знание о сторе мы вынесли в контейнерную компоненту
+const mapStateToProps = (state) => {
+  return {
+    profile: state.profile,
   }
-
-  const addPost = () => {
-    const action = ADD_POST_actionCreator()
-    store.dispatch(action);
-  }
-
-  return <ProfilePosts
-    updateNewPostText={updateNewPostText}
-    addPost={addPost}
-    profile={state.profile}
-  />
 }
 
-export default ProfilePostsContainer
+const mapDispatchToProps = (dispatch) => {
+  const updateNewPostText = (text) => {
+    const action = UPDATE_NEW_POST_actionCreator(text)
+    dispatch(action);
+  }
+  const addPost = () => {
+    const action = ADD_POST_actionCreator()
+    dispatch(action);
+  }
+  return {
+    updateNewPostText: updateNewPostText,
+    addPost: addPost
+  }
+}
+
+const ProfilePostsContainer = connect(mapStateToProps, mapDispatchToProps)(ProfilePosts);
+export default ProfilePostsContainer;
