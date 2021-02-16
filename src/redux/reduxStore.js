@@ -13,4 +13,6 @@ const reducers = combineReducers({ // связка редьюсеров - вос
 
 const store = createStore(reducers);
 
+window.store = store;
+
 export default store
