@@ -16,7 +16,7 @@ const dialogsReducer = (state = initialState, action) => {
     case ADD_MESSAGE: {
       return {
         ...state,
-        ARR__MESSAGES: [...state.ARR__MESSAGES, action.newText],
+        ARR__MESSAGES: [...state.ARR__MESSAGES, { ...state }.NEW_MESSAGE_TEXT],
         NEW_MESSAGE_TEXT: "",
       }
     }
