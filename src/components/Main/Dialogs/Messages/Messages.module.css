@@ -60,7 +60,7 @@
 
 .messages__ButtonFormSent {
   box-shadow: var(--box-shadow);
-  padding: 10px 20px 13px;
+  padding: 10px 20px 11px;
   background-color: var(--rootBackground);
   color: var(--rootText);
 }

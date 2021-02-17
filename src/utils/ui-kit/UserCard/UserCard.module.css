@@ -1,0 +1,80 @@
+.userCard__item {
+  display: grid;
+  grid-template-columns: 100px auto;
+  gap: 10px;
+}
+
+.findUsers {
+  padding: 10px;
+}
+
+.userCard__avatar {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.userCard__IconAvatar {
+  width: 75px;
+  height: 75px;
+  margin: 10px;
+}
+
+.userCard__button {
+  padding: 10px;
+  margin: 10px;
+  box-shadow: var(--box-shadow);
+}
+
+.userCard__button_follow {
+  opacity: .2;
+}
+
+.userCard__about {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+  align-items: center;
+}
+
+.userCard__aboutItem {
+  display: flex;
+  flex-direction: column;
+}
+
+.userCard__aboutItem_left {
+  align-items: flex-start;
+}
+
+.userCard__aboutItem_right {
+  align-items: flex-end;
+}
+
+.userCard__data {
+  margin: 5px;
+  line-height: 1.5;
+}
+
+@media (max-width: 600px) {
+  .userCard__item {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  .userCard__aboutItem_left, .userCard__aboutItem_right {
+    align-items: center;
+    text-align: center;
+    padding-top: 0;
+  }
+  .userCard__avatar {
+    padding: 5px;
+  }
+}
+
+@media (max-width: 480px) {
+  .userCard__about {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+}

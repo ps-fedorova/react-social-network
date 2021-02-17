@@ -1,11 +1,12 @@
 .app {
   min-height: 100vh;
+  min-width: 320px;
   display: grid;
   grid-template-areas:
   "header header"
   "nav content";
   grid-template-rows: auto 1fr;
-  grid-template-columns: 140px auto;
+  grid-template-columns: 150px auto;
   background-color: var(--rootBackground);
   color: var(--rootText);
   font: var(--font);
