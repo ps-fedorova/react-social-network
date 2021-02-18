@@ -27,7 +27,7 @@
   box-shadow: var(--box-shadow);
 }
 
-.userCard__button_follow {
+.userCard__button_followed {
   opacity: .2;
 }
 

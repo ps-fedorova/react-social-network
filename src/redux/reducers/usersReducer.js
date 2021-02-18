@@ -1,4 +1,4 @@
-import { FOLLOW, SET_USERS, UNFOLLOW } from "../types";
+import { followed, SET_USERS, UNfollowed } from "../types";
 
 const initialState = {
   USER_DATA: [],
@@ -6,28 +6,28 @@ const initialState = {
 
 const usersReducer = (state = initialState, action) => {
   switch (action.type) {
-    case FOLLOW:
+    case followed:
       return {
         ...state,
         USER_DATA: state.USER_DATA.map((user) => {
           if (user.id === action.userId) {
             return {
               ...user,
-              follow: true
+              followed: true
             }
           } else {
             return user;
           }
         }),
       }
-    case UNFOLLOW: {
+    case UNfollowed: {
       return {
         ...state,
         USER_DATA: state.USER_DATA.map((user) => {
           if (user.id === action.userId) {
             return {
               ...user,
-              follow: false
+              followed: false
             }
           } else {
             return user;
@@ -50,13 +50,13 @@ const usersReducer = (state = initialState, action) => {
 export default usersReducer;
 
 
-export const followAC = (userId) => ({
-  type: FOLLOW,
+export const followedAC = (userId) => ({
+  type: followed,
   userId: userId
 });
 
-export const unFollowAC = (userId) => ({
-  type: UNFOLLOW,
+export const unfollowedAC = (userId) => ({
+  type: UNfollowed,
   userId: userId
 });
 

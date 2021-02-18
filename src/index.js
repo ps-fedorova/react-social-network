@@ -9,13 +9,13 @@ import store from './redux/reduxStore';
 import { Provider } from "react-redux";
 
 const app = (
-  <React.StrictMode>
+  // <React.StrictMode>
     <BrowserRouter>
       <Provider store={store}>
         <App/>
       </Provider>
     </BrowserRouter>
-  </React.StrictMode>
+  // </React.StrictMode>
 )
 
 ReactDOM.render(app, document.getElementById('root'));

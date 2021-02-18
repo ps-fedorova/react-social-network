@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
 import FindUsers from "./FindUsers";
-import { followAC, setUsersAC, unFollowAC } from "../../../redux/reducers/usersReducer";
+import { followedAC, setUsersAC, unfollowedAC } from "../../../redux/reducers/usersReducer";
 import Friends from "./Friends";
 
 const mapStateToProps = (state) => {
@@ -10,12 +10,12 @@ const mapStateToProps = (state) => {
 }
 
 const mapDispatchToProps = (dispatch) => {
-  const follow = (userId) => {
-    const action = followAC(userId)
+  const followed = (userId) => {
+    const action = followedAC(userId)
     dispatch(action);
   };
-  const unfollow = (userId) => {
-    const action = unFollowAC(userId)
+  const unfollowed = (userId) => {
+    const action = unfollowedAC(userId)
     dispatch(action)
   }
   const setUsers = (users) => {
@@ -23,7 +23,7 @@ const mapDispatchToProps = (dispatch) => {
     dispatch(action)
   }
 
-  return { follow, unfollow, setUsers }
+  return { followed, unfollowed, setUsers }
 }
 
 export const FriendsContainer = connect(mapStateToProps, mapDispatchToProps)(Friends)
