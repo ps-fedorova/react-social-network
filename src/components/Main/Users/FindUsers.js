@@ -4,59 +4,20 @@ import UserCard from "../../../utils/ui-kit/UserCard/UserCard";
 import * as axios from "axios";
 
 class FindUsers extends React.Component {
-  constructor(props) {
-    super(props);
+
+  componentDidMount() {
     // if (this.props.users.length === 0) { // конструктор вызывается итак и раз
-      axios.get("https://social-network.samuraijs.com/api/1.0/users")
-        .then(res => {
-          this.props.setUsers(res.data.items);
-          console.log("юзеры пришли");
-        })
-        .catch(() => console.log("юзеры не пришли"));
-      // setUsers([
-      //   {
-      //     id: 0,
-      //     name: "Дмитрий",
-      //     followed: true,
-      //     location: {
-      //       city: "Город",
-      //       country: "Страна",
-      //     }
-      //   },
-      //   {
-      //     id: 1,
-      //     name: "Дмитрий",
-      //     followed: true,
-      //     location: {
-      //       city: "Город",
-      //       country: "Страна",
-      //     }
-      //   },
-      //   {
-      //     id: 2,
-      //     name: "Дмитрий",
-      //     followed: false,
-      //     location: {
-      //       city: "Город",
-      //       country: "Страна",
-      //     }
-      //   },
-      //   {
-      //     id: 3,
-      //     name: "Дмитрий",
-      //     followed: false,
-      //     location: {
-      //       city: "Город",
-      //       country: "Страна",
-      //     }
-      //   },
-      // ])
-    // }
+    axios.get("https://social-network.samuraijs.com/api/1.0/users")
+      .then(res => {
+        this.props.setUsers(res.data.items);
+        console.log("юзеры пришли");
+      })
+      .catch(() => console.log("юзеры не пришли"));
   }
 
   render() {
     const { users, followed, unfollowed, setUsers } = this.props
-    return(
+    return (
 
       <div className={s.findUsers}>
         <ul className="list">
