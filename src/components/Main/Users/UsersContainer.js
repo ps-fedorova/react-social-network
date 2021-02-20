@@ -2,12 +2,12 @@ import React from 'react';
 import { connect } from "react-redux";
 
 import {
-  followedAC,
-  setCurrentPageAC,
-  setIsFetchingAC,
-  setTotalUserCountAC,
-  setUsersAC,
-  unfollowedAC,
+  followed,
+  setCurrentPage,
+  setIsFetching,
+  setTotalUserCount,
+  setUsers,
+  unfollowed,
 } from "../../../redux/reducers/usersReducer";
 
 import Friends from "./Friends";
@@ -29,7 +29,9 @@ class UsersContainer extends React.Component {
         console.log("юзеры пришли");
       })
       .catch(() => console.log("юзеры не пришли"))
-      .finally(() => this.props.setIsFetching(false));
+      .finally(() => {
+        this.props.setIsFetching(false);
+      });
   }
 
   onPageChanged = (page) => {
@@ -48,22 +50,22 @@ class UsersContainer extends React.Component {
   }
 
   render() {
-    const { users, pageSize, totalUserCount, currentPage, followed, unfollowed, setUsers, isFetching} = this.props;
+    const { users, pageSize, totalUserCount, currentPage, followed, unfollowed, setUsers, isFetching } = this.props;
 
     return (
       <>
         {isFetching
-         ? <Spinner/>
-         : <Users
-          users={users}
-          followed={followed}
-          unfollowed={unfollowed}
-          setUsers={setUsers}
-          currentPage={currentPage}
-          pageSize={pageSize}
-          totalUserCount={totalUserCount}
-          onPageChanged={this.onPageChanged}
-        />
+          ? <Spinner/>
+          : <Users
+            users={users}
+            followed={followed}
+            unfollowed={unfollowed}
+            setUsers={setUsers}
+            currentPage={currentPage}
+            pageSize={pageSize}
+            totalUserCount={totalUserCount}
+            onPageChanged={this.onPageChanged}
+          />
         }
       </>
     )
@@ -79,33 +81,13 @@ const mapStateToProps = (state) => {
     isFetching: state.users.IS_FETCHING,
   }
 }
-const mapDispatchToProps = (dispatch) => {
-  const followed = (userId) => {
-    const action = followedAC(userId)
-    dispatch(action);
-  };
-  const unfollowed = (userId) => {
-    const action = unfollowedAC(userId)
-    dispatch(action)
-  }
-  const setUsers = (users) => {
-    const action = setUsersAC(users)
-    dispatch(action)
-  }
-  const setCurrentPage = (currentPage) => {
-    const action = setCurrentPageAC(currentPage)
-    dispatch(action)
-  }
-  const setTotalUserCount = (totalUserCount) => {
-    const action = setTotalUserCountAC(totalUserCount)
-    dispatch(action)
-  }
-
-  const setIsFetching = (isFetching) => {
-    const action = setIsFetchingAC(isFetching);
-    dispatch(action);
-  }
-  return { followed, unfollowed, setUsers, setCurrentPage, setTotalUserCount, setIsFetching }
+const mapDispatchToProps = {
+  followed,
+  setCurrentPage,
+  setIsFetching,
+  setTotalUserCount,
+  setUsers,
+  unfollowed,
 }
 
 export const FriendsContainer = connect(mapStateToProps, mapDispatchToProps)(Friends)
