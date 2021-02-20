@@ -1,11 +1,11 @@
-import { FOLLOW, SET_USERS, UN_FOLLOW, SET_CURRENT_PAGE, SET_TOTAL_USER_COUNT } from "../types";
+import { FOLLOW, SET_USERS, UN_FOLLOW, SET_CURRENT_PAGE, SET_TOTAL_USER_COUNT, TOGGLE_IS_FETCHING } from "../types";
 
 const initialState = {
   USER_DATA: [],
   PAGE_SIZE: 5, // захардкожено
   TOTAL_USER_COUNT: 0, // c сервака
   CURRENT_PAGE: 1, // c сервака
-
+  IS_FETCHING: true,
 };
 
 const usersReducer = (state = initialState, action) => {
@@ -43,6 +43,9 @@ const usersReducer = (state = initialState, action) => {
     case SET_TOTAL_USER_COUNT: {
       return { ...state, TOTAL_USER_COUNT: action.totalUserCount }
     }
+    case TOGGLE_IS_FETCHING: {
+      return {...state, IS_FETCHING: action.isFetching}
+    }
     default:
       return state;
   }
@@ -73,4 +76,8 @@ export const setCurrentUserAC = (currentPage) => ({
 
 export const setTotalUserCountAC = (totalUserCount) => ({
   type: SET_TOTAL_USER_COUNT, totalUserCount
+});
+
+export const setIsFetchingAC = (isFetching) => ({
+  type: TOGGLE_IS_FETCHING, isFetching
 });

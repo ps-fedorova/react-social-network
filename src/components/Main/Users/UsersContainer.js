@@ -3,19 +3,21 @@ import { connect } from "react-redux";
 
 import {
   followedAC,
-  setCurrentUserAC,
+  setCurrentUserAC, setIsFetchingAC,
   setTotalUserCountAC,
   setUsersAC,
-  unfollowedAC
+  unfollowedAC,
 } from "../../../redux/reducers/usersReducer";
+
 import Friends from "./Friends";
 import * as axios from "axios";
 import Users from "./Users";
+import Spinner from "../../../utils/ui-kit/Spinner/Spinner";
 
 class UsersContainer extends React.Component {
 
   componentDidMount() {
-    // if (this.props.users.length === 0) { // конструктор вызывается итак и раз
+    this.props.setIsFetching(true)
     axios.get(`https://social-network.samuraijs.com/api/1.0/users?`
       + `count=${this.props.pageSize}&` // размер страницы (сколько элементов будет возвращено в ответ)
       + `page=${this.props.currentPage}` // номер страницы
@@ -25,11 +27,13 @@ class UsersContainer extends React.Component {
         this.props.setTotalUserCount(res.data.totalCount)
         console.log("юзеры пришли");
       })
-      .catch(() => console.log("юзеры не пришли"));
+      .catch(() => console.log("юзеры не пришли"))
+      .finally(() => this.props.setIsFetching(false));
   }
 
   onPageChanged = (page) => {
     this.props.setCurrentPage(page);
+    this.props.setIsFetching(true)
     axios.get(`https://social-network.samuraijs.com/api/1.0/users?`
       + `count=${this.props.pageSize}&` // размер страницы (сколько элементов будет возвращено в ответ)
       + `page=${page}` // номер страницы
@@ -38,23 +42,29 @@ class UsersContainer extends React.Component {
         this.props.setUsers(res.data.items);
         console.log("юзеры пришли, все хорошо");
       })
-      .catch(() => console.log("что-то пошло не так"));
+      .catch(() => console.log("что-то пошло не так"))
+      .finally(() => this.props.setIsFetching(false));
   }
 
   render() {
-    const { users, pageSize, totalUserCount, currentPage, followed, unfollowed, setUsers } = this.props;
+    const { users, pageSize, totalUserCount, currentPage, followed, unfollowed, setUsers, isFetching} = this.props;
 
     return (
-      <Users
-        users={users}
-        followed={followed}
-        unfollowed={unfollowed}
-        setUsers={setUsers}
-        currentPage={currentPage}
-        pageSize={pageSize}
-        totalUserCount={totalUserCount}
-        onPageChanged={this.onPageChanged}
-      />
+      <>
+        {isFetching
+         ? <Spinner/>
+         : <Users
+          users={users}
+          followed={followed}
+          unfollowed={unfollowed}
+          setUsers={setUsers}
+          currentPage={currentPage}
+          pageSize={pageSize}
+          totalUserCount={totalUserCount}
+          onPageChanged={this.onPageChanged}
+        />
+        }
+      </>
     )
   }
 }
@@ -64,7 +74,8 @@ const mapStateToProps = (state) => {
     users: state.users.USER_DATA,
     pageSize: state.users.PAGE_SIZE,
     totalUserCount: state.users.TOTAL_USER_COUNT,
-    currentPage: state.users.CURRENT_PAGE
+    currentPage: state.users.CURRENT_PAGE,
+    isFetching: state.users.IS_FETCHING,
   }
 }
 const mapDispatchToProps = (dispatch) => {
@@ -88,9 +99,13 @@ const mapDispatchToProps = (dispatch) => {
     const action = setTotalUserCountAC(totalUserCount)
     dispatch(action)
   }
-  return { followed, unfollowed, setUsers, setCurrentPage, setTotalUserCount }
+
+  const setIsFetching = (isFetching) => {
+    const action = setIsFetchingAC(isFetching);
+    dispatch(action);
+  }
+  return { followed, unfollowed, setUsers, setCurrentPage, setTotalUserCount, setIsFetching }
 }
 
 export const FriendsContainer = connect(mapStateToProps, mapDispatchToProps)(Friends)
 export const FindUsersContainer = connect(mapStateToProps, mapDispatchToProps)(UsersContainer)
-

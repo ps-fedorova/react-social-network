@@ -16,7 +16,7 @@ const Main = () => {
           <Dialogs/>
         </Route>
         <Route path="/friends">
-          <FriendsContainer/>
+          {/*<FriendsContainer/>*/}
         </Route>
         <Route path="/find-users">
           <FindUsersContainer/>
