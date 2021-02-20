@@ -1,11 +1,29 @@
+.findUsers {
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  min-height: var(--height-content);
+}
+
+.userCard__list {
+  flex-grow: 1;
+}
+
 .userCard__item {
   display: grid;
   grid-template-columns: 100px auto;
   gap: 10px;
 }
 
-.findUsers {
-  padding: 10px;
+.findUsers__paginationList {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
+
+.findUsers__page_selected {
+  background-color: var(--rootBackgroundSecond);
 }
 
 .userCard__avatar {
@@ -25,6 +43,10 @@
   padding: 10px;
   margin: 10px;
   box-shadow: var(--box-shadow);
+}
+
+.userCard__button_pagination {
+  transition: all .8s;
 }
 
 .userCard__button_followed {
@@ -67,6 +89,7 @@
     text-align: center;
     padding-top: 0;
   }
+
   .userCard__avatar {
     padding: 5px;
   }
