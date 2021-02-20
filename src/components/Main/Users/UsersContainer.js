@@ -3,7 +3,8 @@ import { connect } from "react-redux";
 
 import {
   followedAC,
-  setCurrentUserAC, setIsFetchingAC,
+  setCurrentPageAC,
+  setIsFetchingAC,
   setTotalUserCountAC,
   setUsersAC,
   unfollowedAC,
@@ -92,7 +93,7 @@ const mapDispatchToProps = (dispatch) => {
     dispatch(action)
   }
   const setCurrentPage = (currentPage) => {
-    const action = setCurrentUserAC(currentPage)
+    const action = setCurrentPageAC(currentPage)
     dispatch(action)
   }
   const setTotalUserCount = (totalUserCount) => {

@@ -69,7 +69,7 @@ export const setUsersAC = (users) => ({
   users: users
 });
 
-export const setCurrentUserAC = (currentPage) => ({
+export const setCurrentPageAC = (currentPage) => ({
   type: SET_CURRENT_PAGE,
   currentPage: currentPage
 });
