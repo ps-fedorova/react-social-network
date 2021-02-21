@@ -2,14 +2,28 @@ import React from 'react';
 import s from './IconAvatar.module.css'
 import avatar from "../../../images/avatar.jpg";
 
-const IconAvatar = (props) => {
-  const { profileAvatarClassName, src } = props;
+const IconAvatar = ({ profileAvatarClassName, src, profile }) => {
   return (
-    <img
-      className={s.iconAvatar + " " + profileAvatarClassName}
-      src={src === null || src === undefined ? avatar : src}
-      alt="avatar"
-    />
+    <>
+      {profile ?
+        <img
+          className={s.iconAvatar + " " + profileAvatarClassName}
+          src={profile.photos.large}
+          alt="avatar"
+        />
+        : src ?
+          <img
+            className={s.iconAvatar + " " + profileAvatarClassName}
+            src={src}
+            alt="avatar"
+          />
+          : <img
+            className={s.iconAvatar + " " + profileAvatarClassName}
+            src={avatar}
+            alt="avatar"
+          />
+      }
+    </>
   )
 }
 

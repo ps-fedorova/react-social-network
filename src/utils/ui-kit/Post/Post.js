@@ -7,7 +7,7 @@ const Post = (props) => {
 
   return (
     <div className={s.post__item}>
-      <IconAvatar/>
+      <IconAvatar />
       <p className={s.post__text}>{item}</p>
     </div>
   )
