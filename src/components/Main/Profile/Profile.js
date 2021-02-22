@@ -5,14 +5,17 @@ import ProfilePostsContainer from "./ProfilePosts/ProfilePostsContainer";
 import s from "./Profile.module.css";
 
 const Profile = ({profile}) => {
-
+// debugger
   return (
     <div>
       {/*<img className={s.profile__imgBg} src={forest} alt="forest"/>*/}
       <div className={s.profile__content}>
         <div className={s.profile__info}>
           <IconAvatar profileAvatarClassName={s.profile__IconAvatar} profile={profile}/>
-          <p>Полина</p>
+         <div>
+           <p>{profile ? profile.fullName : ''}</p>
+           <p>{profile ? profile.aboutMe : ''}</p>
+         </div>
         </div>
         <ProfilePostsContainer/>
       </div>

@@ -12,6 +12,7 @@ const UserCard = (props) => {
   const onUnfollowedClick = () => {
     unfollowed(user.id)
   }
+// debugger
 
   return (
     <li className={`post__item ${s.userCard__item}`}>
@@ -23,7 +24,7 @@ const UserCard = (props) => {
       <div className={` ${s.userCard__about}`}>
         <div className={`${s.userCard__aboutItem} ${s["userCard__aboutItem_left"]}`}>
           <p className={s.userCard__data}>{user.name}</p>
-          <p className={s.userCard__data}>{`${"user.location.country"}, ${"user.location.city"}`}</p>
+          <p className={s.userCard__data}>{user.status}</p>
         </div>
         <div className={`${s.userCard__aboutItem} ${s["userCard__aboutItem_right"]}`}>
           {user.followed
