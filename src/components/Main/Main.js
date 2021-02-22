@@ -9,7 +9,7 @@ const Main = () => {
   return (
     <div className={s.main}>
       <Switch>
-        <Route path="/profile">
+        <Route path="/profile/:userId?">
           <ProfileContainer/>
         </Route>
         <Route path="/dialogs">

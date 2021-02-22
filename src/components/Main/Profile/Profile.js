@@ -5,6 +5,7 @@ import ProfilePostsContainer from "./ProfilePosts/ProfilePostsContainer";
 import s from "./Profile.module.css";
 
 const Profile = ({profile}) => {
+
   return (
     <div>
       {/*<img className={s.profile__imgBg} src={forest} alt="forest"/>*/}

@@ -8,7 +8,7 @@ const IconAvatar = ({ profileAvatarClassName, src, profile }) => {
       {profile ?
         <img
           className={s.iconAvatar + " " + profileAvatarClassName}
-          src={profile.photos.large}
+          src={profile.photos.large ? profile.photos.large : avatar}
           alt="avatar"
         />
         : src ?
