@@ -3,7 +3,10 @@ import { Route, Switch } from "react-router-dom";
 import s from "./Main.module.css"
 import ProfileContainer from "./Profile/ProfileContainer";
 import Dialogs from "./Dialogs/Dialogs";
-import { FindUsersContainer, FriendsContainer } from "./Users/UsersContainer";
+import {
+  FindUsersContainer,
+  // FriendsContainer
+} from "./Users/UsersContainer";
 
 const Main = () => {
   return (
