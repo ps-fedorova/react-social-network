@@ -21,7 +21,8 @@ class UsersContainer extends React.Component {
     this.props.setIsFetching(true)
     axios.get(`https://social-network.samuraijs.com/api/1.0/users?`
       + `count=${this.props.pageSize}&` // размер страницы (сколько элементов будет возвращено в ответ)
-      + `page=${this.props.currentPage}` // номер страницы
+      + `page=${this.props.currentPage}`,
+      { withCredentials: true }// номер страницы
     )
       .then(res => {
         this.props.setUsers(res.data.items);
@@ -39,7 +40,8 @@ class UsersContainer extends React.Component {
     this.props.setIsFetching(true)
     axios.get(`https://social-network.samuraijs.com/api/1.0/users?`
       + `count=${this.props.pageSize}&` // размер страницы (сколько элементов будет возвращено в ответ)
-      + `page=${page}` // номер страницы
+      + `page=${page}`, // номер страницы
+      { withCredentials: true }
     )
       .then(res => {
         this.props.setUsers(res.data.items);
