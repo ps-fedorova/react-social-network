@@ -13,13 +13,13 @@ import {
 import Friends from "./Friends";
 import Users from "./Users";
 import Spinner from "../../../utils/ui-kit/Spinner/Spinner";
-import { getUsers } from "../../../API/API";
+import { usersAPI } from "../../../API/API";
 
 class UsersContainer extends React.Component {
 
   componentDidMount() {
     this.props.setIsFetching(true);
-    getUsers(this.props.pageSize, this.props.currentPage)
+    usersAPI.getUsers(this.props.pageSize, this.props.currentPage)
       .then(data => {
         this.props.setUsers(data.items);
         this.props.setTotalUserCount(data.totalCount)
@@ -34,7 +34,7 @@ class UsersContainer extends React.Component {
   onPageChanged = (page) => {
     this.props.setCurrentPage(page);
     this.props.setIsFetching(true)
-    getUsers(this.props.pageSize, page)
+    usersAPI.getUsers(this.props.pageSize, page)
       .then(data => {
         this.props.setUsers(data.items);
         console.log("юзеры пришли, все хорошо");
