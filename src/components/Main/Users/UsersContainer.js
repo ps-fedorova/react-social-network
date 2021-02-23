@@ -11,22 +11,18 @@ import {
 } from "../../../redux/reducers/usersReducer";
 
 import Friends from "./Friends";
-import * as axios from "axios";
 import Users from "./Users";
 import Spinner from "../../../utils/ui-kit/Spinner/Spinner";
+import { getUsers } from "../../../API/API";
 
 class UsersContainer extends React.Component {
 
   componentDidMount() {
-    this.props.setIsFetching(true)
-    axios.get(`https://social-network.samuraijs.com/api/1.0/users?`
-      + `count=${this.props.pageSize}&` // размер страницы (сколько элементов будет возвращено в ответ)
-      + `page=${this.props.currentPage}`,
-      { withCredentials: true }// номер страницы
-    )
-      .then(res => {
-        this.props.setUsers(res.data.items);
-        this.props.setTotalUserCount(res.data.totalCount)
+    this.props.setIsFetching(true);
+    getUsers(this.props.pageSize, this.props.currentPage)
+      .then(data => {
+        this.props.setUsers(data.items);
+        this.props.setTotalUserCount(data.totalCount)
         console.log("юзеры пришли");
       })
       .catch(() => console.log("юзеры не пришли"))
@@ -38,13 +34,9 @@ class UsersContainer extends React.Component {
   onPageChanged = (page) => {
     this.props.setCurrentPage(page);
     this.props.setIsFetching(true)
-    axios.get(`https://social-network.samuraijs.com/api/1.0/users?`
-      + `count=${this.props.pageSize}&` // размер страницы (сколько элементов будет возвращено в ответ)
-      + `page=${page}`, // номер страницы
-      { withCredentials: true }
-    )
-      .then(res => {
-        this.props.setUsers(res.data.items);
+    getUsers(this.props.pageSize, page)
+      .then(data => {
+        this.props.setUsers(data.items);
         console.log("юзеры пришли, все хорошо");
       })
       .catch(() => console.log("что-то пошло не так"))
