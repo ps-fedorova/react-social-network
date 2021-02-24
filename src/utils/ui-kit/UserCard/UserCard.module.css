@@ -50,6 +50,11 @@
 }
 
 .userCard__button_followed {
+  background-color: var(--rootBackgroundSecond);
+  /*opacity: .5;*/
+}
+
+.userCard__button:disabled {
   opacity: .2;
 }
 
@@ -74,7 +79,7 @@
 }
 
 .userCard__data {
-  margin: 5px;
+  margin: 5px 15px;
   line-height: 1.5;
 }
 

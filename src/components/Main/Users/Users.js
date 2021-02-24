@@ -3,7 +3,20 @@ import s from "../../../utils/ui-kit/UserCard/UserCard.module.css";
 import UserCard from "../../../utils/ui-kit/UserCard/UserCard";
 import Pagination from "react-js-pagination";
 
-const Users = ({users, followed, unfollowed, setUsers, currentPage, pageSize, totalUserCount, onPageChanged}) => {
+const Users = (props) => {
+
+  const {
+    users,
+    followed,
+    unfollowed,
+    setIsFollowingProgress,
+    setUsers,
+    currentPage,
+    pageSize,
+    totalUserCount,
+    onPageChanged,
+    isFollowingProgress,
+  } = props;
 
   const pagesCount = Math.ceil(totalUserCount / pageSize);
   const pages = [];
@@ -22,6 +35,8 @@ const Users = ({users, followed, unfollowed, setUsers, currentPage, pageSize, to
             followed={followed}
             unfollowed={unfollowed}
             setUsers={setUsers}
+            setIsFollowingProgress={setIsFollowingProgress}
+            isFollowingProgress={isFollowingProgress}
           />)}
       </ul>
       <div>

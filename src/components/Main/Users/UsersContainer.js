@@ -5,6 +5,7 @@ import {
   followed,
   setCurrentPage,
   setIsFetching,
+  setIsFollowingProgress,
   setTotalUserCount,
   setUsers,
   unfollowed,
@@ -44,20 +45,13 @@ class UsersContainer extends React.Component {
   }
 
   render() {
-    const { users, pageSize, totalUserCount, currentPage, followed, unfollowed, setUsers, isFetching } = this.props;
 
     return (
       <>
-        {isFetching
+        {this.props.isFetching
           ? <Spinner/>
           : <Users
-            users={users}
-            followed={followed}
-            unfollowed={unfollowed}
-            setUsers={setUsers}
-            currentPage={currentPage}
-            pageSize={pageSize}
-            totalUserCount={totalUserCount}
+            {...this.props}
             onPageChanged={this.onPageChanged}
           />
         }
@@ -73,15 +67,17 @@ const mapStateToProps = (state) => {
     totalUserCount: state.users.TOTAL_USER_COUNT,
     currentPage: state.users.CURRENT_PAGE,
     isFetching: state.users.IS_FETCHING,
+    isFollowingProgress: state.users.FOLLOWING_IN_PROGRESS,
   }
 }
 const mapDispatchToProps = {
   followed,
+  unfollowed,
   setCurrentPage,
   setIsFetching,
   setTotalUserCount,
   setUsers,
-  unfollowed,
+  setIsFollowingProgress,
 }
 
 export const FriendsContainer = connect(mapStateToProps, mapDispatchToProps)(Friends)

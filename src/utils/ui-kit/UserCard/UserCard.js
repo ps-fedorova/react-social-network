@@ -5,9 +5,10 @@ import { NavLink } from "react-router-dom";
 import { followAPI } from "../../../API/API";
 
 const UserCard = (props) => {
-  const { user, followed, unfollowed } = props;
+  const { user, followed, unfollowed, setIsFollowingProgress, isFollowingProgress } = props;
 
   const onFollowedClick = () => {
+    setIsFollowingProgress(true, user.id);
     followAPI.postFollow(user.id)
       .then(data => {
         if (data.resultCode === 0) {
@@ -16,8 +17,10 @@ const UserCard = (props) => {
         }
       })
       .catch(() => console.log("подписаться не получилось"))
+      .finally(() => setIsFollowingProgress(false, user.id))
   }
   const onUnfollowedClick = () => {
+    setIsFollowingProgress(true, user.id);
     followAPI.deleteFollow(user.id)
       .then(data => {
         if (data.resultCode === 0) {
@@ -26,6 +29,7 @@ const UserCard = (props) => {
         }
       })
       .catch(() => console.log("отписаться не получилось"))
+      .finally(() => setIsFollowingProgress(false, user.id))
   }
   return (
     <li className={`post__item ${s.userCard__item}`}>
@@ -40,10 +44,11 @@ const UserCard = (props) => {
           <p className={s.userCard__data}>{user.status}</p>
         </div>
         <div className={`${s.userCard__aboutItem} ${s["userCard__aboutItem_right"]}`}>
-          {user.followed
-            ? <button onClick={onUnfollowedClick}
-                      className={`button ${s.userCard__button} ${s["userCard__button_followed"]}`}>followed</button>
-            : <button onClick={onFollowedClick} className={`button ${s.userCard__button}`}>Unfollowed</button>
+          {user.followed // если массив содержит id пользователя
+            ? <button disabled={isFollowingProgress.includes(user.id)} onClick={onUnfollowedClick}
+                      className={`button ${s.userCard__button} ${s["userCard__button_followed"]}`}>follow</button>
+            : <button disabled={isFollowingProgress.includes(user.id)} onClick={onFollowedClick}
+                      className={`button ${s.userCard__button}`}>unfollow</button>
           }
         </div>
       </div>

@@ -1,4 +1,12 @@
-import { FOLLOW, SET_USERS, UN_FOLLOW, SET_CURRENT_PAGE, SET_TOTAL_USER_COUNT, TOGGLE_IS_FETCHING } from "../types";
+import {
+  FOLLOW,
+  SET_USERS,
+  UN_FOLLOW,
+  SET_CURRENT_PAGE,
+  SET_TOTAL_USER_COUNT,
+  TOGGLE_IS_FETCHING,
+  TOGGLE_IS_FOLLOWING_PROGRESS
+} from "../types";
 
 const initialState = {
   USER_DATA: [],
@@ -6,6 +14,7 @@ const initialState = {
   TOTAL_USER_COUNT: 0, // c сервака
   CURRENT_PAGE: 1, // c сервака
   IS_FETCHING: true,
+  FOLLOWING_IN_PROGRESS: []
 };
 
 const usersReducer = (state = initialState, action) => {
@@ -44,8 +53,14 @@ const usersReducer = (state = initialState, action) => {
       return { ...state, TOTAL_USER_COUNT: action.totalUserCount }
     }
     case TOGGLE_IS_FETCHING: {
-      return {...state, IS_FETCHING: action.isFetching}
+      return { ...state, IS_FETCHING: action.isFetching }
     }
+    case TOGGLE_IS_FOLLOWING_PROGRESS:
+      return {
+        ...state, FOLLOWING_IN_PROGRESS: action.isFollowingProgress
+          ? [...state.FOLLOWING_IN_PROGRESS, action.userId]
+          : state.FOLLOWING_IN_PROGRESS.filter(id => id !== action.userId)
+      }
     default:
       return state;
   }
@@ -80,4 +95,8 @@ export const setTotalUserCount = (totalUserCount) => ({
 
 export const setIsFetching = (isFetching) => ({
   type: TOGGLE_IS_FETCHING, isFetching
+});
+
+export const setIsFollowingProgress = (isFollowingProgress, userId) => ({
+  type: TOGGLE_IS_FOLLOWING_PROGRESS, isFollowingProgress, userId
 });
