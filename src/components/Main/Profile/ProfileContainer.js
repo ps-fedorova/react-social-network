@@ -8,9 +8,9 @@ class ProfileContainer extends React.Component {
 
   componentDidMount() {
     let id = this.props.match.params.userId // запрос к URL
-    // if (!id) {
-    //   id = 2
-    // }
+    if (!id) {
+      id = 2
+    }
     this.props.getProfileThunkCreator(id)
   }
 
