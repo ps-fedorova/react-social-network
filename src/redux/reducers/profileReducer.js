@@ -1,4 +1,5 @@
 import { ADD_POST, UPDATE_NEW_POST_TEXT, SET_USER_PROFILE } from "../types";
+import { profileAPI } from "../../API/API";
 
 const initialState = {
   ARR_POSTS: [
@@ -57,6 +58,7 @@ const profileReducer = (state = initialState, action) => {
 
 export default profileReducer;
 
+// actions
 export const updateNewPostText = (text) => ({
   type: UPDATE_NEW_POST_TEXT,
   newText: text,
@@ -64,7 +66,17 @@ export const updateNewPostText = (text) => ({
 
 export const addPost = () => ({ type: ADD_POST });
 
-export const setUserProfile = (profile) => ({
+const setUserProfile = (profile) => ({
   type: SET_USER_PROFILE,
   profile
 })
+
+// thunks
+export const getProfileThunkCreator = (id) => {
+  return (dispatch) => {
+    profileAPI.getProfile(id).then(data => {
+      dispatch(setUserProfile(data));
+      console.log("юзер!");
+    }).catch(() => console.log("юзер не пришел =(("))
+  }
+}

@@ -1,4 +1,5 @@
 import { SET_USER_DATA } from "../types";
+import { authAPI } from "../../API/API";
 
 const initialState = {
   id: null,
@@ -22,7 +23,7 @@ const authReducer = (state = initialState, action) => {
 export default authReducer;
 
 // actions
-export const setUserData = (id, email, login) => ({
+const setUserData = (id, email, login) => ({
   type: SET_USER_DATA,
   data: {
     id,
@@ -31,3 +32,18 @@ export const setUserData = (id, email, login) => ({
   }
 });
 
+// thunks
+export const getAuthTankCreator = () => (dispatch) => {
+  return authAPI.getAuth()
+    .then(data => {
+        if (data.resultCode === 0) {
+          const { id, email, login } = data.data
+          dispatch(setUserData(id, email, login))
+          console.log("authAPI работает")
+        } else {
+          console.log("authAPI не работает")
+        }
+      }
+    )
+    .catch(() => console.log("что-то пошло не так"))
+}
