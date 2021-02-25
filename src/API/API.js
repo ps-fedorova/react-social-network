@@ -20,18 +20,7 @@ export const usersAPI = {
     return (
       axiosInstance.get(`users?count=${pageSize}&page=${currentPage}`)
     ).then(res => res.data) // нам нужны только данные!
-  }
-}
-
-export const profileAPI = {
-  getProfile(id) {
-    return (
-      axiosInstance.get(`profile/${id}`)
-    ).then(res => res.data)
-  }
-}
-
-export const followAPI = {
+  },
   postFollow(id) {
     return (
       axiosInstance.post(`follow/${id}`)
@@ -40,6 +29,14 @@ export const followAPI = {
   deleteFollow(id) {
     return (
       axiosInstance.delete(`follow/${id}`)
+    ).then(res => res.data)
+  }
+}
+
+export const profileAPI = {
+  getProfile(id) {
+    return (
+      axiosInstance.get(`profile/${id}`)
     ).then(res => res.data)
   }
 }

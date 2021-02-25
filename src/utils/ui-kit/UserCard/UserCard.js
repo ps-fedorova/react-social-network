@@ -1,35 +1,16 @@
 import React from 'react';
+import { NavLink } from "react-router-dom";
 import s from './UserCard.module.css'
 import IconAvatar from "../IconAvatar/IconAvatar";
-import { NavLink } from "react-router-dom";
-import { followAPI } from "../../../API/API";
 
 const UserCard = (props) => {
-  const { user, followed, unfollowed, setIsFollowingProgress, isFollowingProgress } = props;
+  const { user, isFollowingProgress, followThunkCreator, unFollowThunkCreator } = props;
 
   const onFollowedClick = () => {
-    setIsFollowingProgress(true, user.id);
-    followAPI.postFollow(user.id)
-      .then(data => {
-        if (data.resultCode === 0) {
-          followed(user.id)
-          console.log("подписались");
-        }
-      })
-      .catch(() => console.log("подписаться не получилось"))
-      .finally(() => setIsFollowingProgress(false, user.id))
+    followThunkCreator(user.id)
   }
   const onUnfollowedClick = () => {
-    setIsFollowingProgress(true, user.id);
-    followAPI.deleteFollow(user.id)
-      .then(data => {
-        if (data.resultCode === 0) {
-          unfollowed(user.id)
-          console.log("отписались");
-        }
-      })
-      .catch(() => console.log("отписаться не получилось"))
-      .finally(() => setIsFollowingProgress(false, user.id))
+    unFollowThunkCreator(user.id)
   }
   return (
     <li className={`post__item ${s.userCard__item}`}>

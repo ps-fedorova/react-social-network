@@ -7,6 +7,7 @@ import {
   TOGGLE_IS_FETCHING,
   TOGGLE_IS_FOLLOWING_PROGRESS
 } from "../types";
+import { usersAPI } from "../../API/API";
 
 const initialState = {
   USER_DATA: [],
@@ -100,3 +101,51 @@ export const setIsFetching = (isFetching) => ({
 export const setIsFollowingProgress = (isFollowingProgress, userId) => ({
   type: TOGGLE_IS_FOLLOWING_PROGRESS, isFollowingProgress, userId
 });
+
+// thunk
+export const getUsersThunkCreator = (pageSize, currentPage) => {
+  return (dispatch) => {
+    dispatch(setIsFetching(true));
+    dispatch(setCurrentPage(currentPage));
+    usersAPI.getUsers(pageSize, currentPage)
+      .then(data => {
+        dispatch(setUsers(data.items));
+        dispatch(setTotalUserCount(data.totalCount));
+        console.log("юзеры пришли");
+      })
+      .catch(() => console.log("юзеры не пришли"))
+      .finally(() => {
+        dispatch(setIsFetching(false));
+      });
+  }
+}
+
+export const followThunkCreator = (userId) => {
+  return (dispatch) => {
+    dispatch(setIsFollowingProgress(true, userId));
+    usersAPI.postFollow(userId)
+      .then(data => {
+        if (data.resultCode === 0) {
+          dispatch(followed(userId))
+          console.log("подписались");
+        }
+      })
+      .catch(() => console.log("подписаться не получилось"))
+      .finally(() => dispatch(setIsFollowingProgress(false, userId)))
+  }
+}
+
+export const unFollowThunkCreator = (userId) => {
+  return (dispatch) => {
+    dispatch(setIsFollowingProgress(true, userId));
+    usersAPI.deleteFollow(userId)
+      .then(data => {
+        if (data.resultCode === 0) {
+          dispatch(unfollowed(userId))
+          console.log("отписались");
+        }
+      })
+      .catch(() => console.log("отписаться не получилось"))
+      .finally(() => dispatch(setIsFollowingProgress(false, userId)));
+  }
+}

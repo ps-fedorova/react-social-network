@@ -7,15 +7,14 @@ const Users = (props) => {
 
   const {
     users,
-    followed,
-    unfollowed,
-    setIsFollowingProgress,
     setUsers,
     currentPage,
     pageSize,
     totalUserCount,
     onPageChanged,
     isFollowingProgress,
+    followThunkCreator,
+    unFollowThunkCreator,
   } = props;
 
   const pagesCount = Math.ceil(totalUserCount / pageSize);
@@ -30,12 +29,11 @@ const Users = (props) => {
       <ul className={`list ${s.userCard__list}`}>
         {users.map((user, index) =>
           <UserCard
+            followThunkCreator={followThunkCreator}
+            unFollowThunkCreator={unFollowThunkCreator}
             user={user}
             key={index}
-            followed={followed}
-            unfollowed={unfollowed}
             setUsers={setUsers}
-            setIsFollowingProgress={setIsFollowingProgress}
             isFollowingProgress={isFollowingProgress}
           />)}
       </ul>
