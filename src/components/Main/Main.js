@@ -2,11 +2,12 @@ import React from 'react';
 import { Route, Switch } from "react-router-dom";
 import s from "./Main.module.css"
 import ProfileContainer from "./Profile/ProfileContainer";
-import Dialogs from "./Dialogs/Dialogs";
+import DialogsContainer from "./Dialogs/DialogsContainer";
 import {
   FindUsersContainer,
   // FriendsContainer
 } from "./Users/UsersContainer";
+import Login from "../Login/Login";
 
 const Main = () => {
   return (
@@ -16,13 +17,16 @@ const Main = () => {
           <ProfileContainer/>
         </Route>
         <Route path="/dialogs">
-          <Dialogs/>
+          <DialogsContainer/>
         </Route>
         <Route path="/friends">
           {/*<FriendsContainer/>*/}
         </Route>
         <Route path="/find-users">
           <FindUsersContainer/>
+        </Route>
+        <Route path="/login">
+          <Login/>
         </Route>
       </Switch>
     </div>

@@ -6,7 +6,7 @@ const initialState = {
   email: null,
   login: null,
   IS_FETCHING: false,
-  isAuth: false
+  isAuth: false // авторизован?
 };
 
 const authReducer = (state = initialState, action) => {
