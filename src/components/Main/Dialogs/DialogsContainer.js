@@ -5,11 +5,9 @@ import DialogsList from "./DialogsList/DialogsList";
 import Messages from "./Messages/Messages";
 import s from "./Dialogs.module.css";
 import { withAuthRedirect } from "../../../HOC/withAuthRedirect";
+import { compose } from "redux";
 
 class DialogsContainer extends React.Component {
-
-  componentDidMount() {
-  }
 
   render() {
     return (
@@ -21,8 +19,6 @@ class DialogsContainer extends React.Component {
   }
 }
 
-const AuthRedirectComponent = withAuthRedirect(DialogsContainer); // 2,3
-
 const mapStateToProps = (state) => {
   return {
     dialogs: state.dialogs,
@@ -30,4 +26,8 @@ const mapStateToProps = (state) => {
 }
 const mapDispatchToProps = { sent, changeTextArea }
 
-export default connect(mapStateToProps, mapDispatchToProps)(AuthRedirectComponent);
+export default compose(
+  connect(mapStateToProps, mapDispatchToProps),
+  withAuthRedirect
+)(DialogsContainer);
+

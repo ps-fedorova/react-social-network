@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import { getProfileThunkCreator } from "../../../redux/reducers/profileReducer";
 import { withAuthRedirect } from "../../../HOC/withAuthRedirect";
+import { compose } from "redux";
 
 class ProfileContainer extends React.Component { // 1
 
@@ -20,19 +21,18 @@ class ProfileContainer extends React.Component { // 1
   }
 }
 
-///////////////////////////////
-
-const AuthRedirectComponent = withAuthRedirect(ProfileContainer); // 2,3
-
 const mapStateToProps = (state) => ({
   profile: state.profile.PROFILE,
 })
 
 const mapDispatchToProps = { getProfileThunkCreator }
 
+export default compose(
+  connect(mapStateToProps, mapDispatchToProps),
+  withRouter,
+  withAuthRedirect
+)(ProfileContainer);
+
 // withRouter будет передавать в обёрнутый компонент обновленные свойства
 // match, location, и history каждый раз, когда тот отрисовывается
 // withRouter = HOC
-const WithUrlDataContainerComponent = withRouter(AuthRedirectComponent) // 4
-export default connect(mapStateToProps, mapDispatchToProps)(WithUrlDataContainerComponent); // 5
-// connect = HOC

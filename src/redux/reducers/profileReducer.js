@@ -15,18 +15,6 @@ const initialState = {
     {
       message: "Все начинать сначала"
     },
-    // {
-    //   message: "Холодная война"
-    // },
-    // {
-    //   message: "И время как вода"
-    // },
-    // {
-    //   message: "Он не сошел с ума"
-    // },
-    // {
-    //   message: "Ты ничего не знала"
-    // },
   ],
   NEW_POST_TEXT: "",
   PROFILE: null
