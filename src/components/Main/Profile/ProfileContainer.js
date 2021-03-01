@@ -3,7 +3,7 @@ import Profile from "./Profile";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import { getProfileThunkCreator } from "../../../redux/reducers/profileReducer";
-import { withAuthRedirect } from "../../../HOC/withAuthRedirect";
+// import { withAuthRedirect } from "../../../HOC/withAuthRedirect";
 import { compose } from "redux";
 
 class ProfileContainer extends React.Component { // 1
@@ -30,7 +30,7 @@ const mapDispatchToProps = { getProfileThunkCreator }
 export default compose(
   connect(mapStateToProps, mapDispatchToProps),
   withRouter,
-  withAuthRedirect
+  // withAuthRedirect
 )(ProfileContainer);
 
 // withRouter будет передавать в обёрнутый компонент обновленные свойства

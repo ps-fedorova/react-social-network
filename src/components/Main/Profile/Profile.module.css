@@ -1,4 +1,4 @@
-.profile__imgBg{
+.profile__imgBg {
   object-fit: cover;
   width: 100%;
   max-height: 100px;
@@ -12,10 +12,29 @@
   display: flex;
   align-items: center;
   padding: 15px 0 0;
+  margin: 5px 0;
 }
 
 .profile__IconAvatar {
   width: 100px;
   height: 100px;
   margin-right: 5%;
+}
+
+.profile__text {
+
+}
+
+.profileStatus__p {
+  padding: 10px;
+  margin: 0;
+}
+
+.profileStatus__input {
+  padding: 5px;
+  margin: 5px;
+  background-color: transparent;
+  color: var(--rootText);
+  box-sizing: border-box;
+  border: none;
 }

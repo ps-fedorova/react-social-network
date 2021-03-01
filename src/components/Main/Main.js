@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, Switch } from "react-router-dom";
+import { Redirect, Route, Switch } from "react-router-dom";
 import s from "./Main.module.css"
 import ProfileContainer from "./Profile/ProfileContainer";
 import DialogsContainer from "./Dialogs/DialogsContainer";
@@ -13,6 +13,9 @@ const Main = () => {
   return (
     <div className={s.main}>
       <Switch>
+        <Route exact path="/">
+          <Redirect to="/profile"/>
+        </Route>
         <Route path="/profile/:userId?">
           <ProfileContainer/>
         </Route>
