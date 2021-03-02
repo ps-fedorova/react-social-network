@@ -2,7 +2,7 @@ import React from 'react';
 import Profile from "./Profile";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
-import { getProfileThunkCreator } from "../../../redux/reducers/profileReducer";
+import { getProfileThunkCreator, getUserStatus, putUserStatus } from "../../../redux/reducers/profileReducer";
 // import { withAuthRedirect } from "../../../HOC/withAuthRedirect";
 import { compose } from "redux";
 
@@ -13,19 +13,21 @@ class ProfileContainer extends React.Component { // 1
     if (!id) { // если в адресной строке .../profile, то по умолчанию подставится 2
       id = 2
     }
-    this.props.getProfileThunkCreator(id)
+    this.props.getProfileThunkCreator(id);
+    this.props.getUserStatus(id);
   }
 
   render() {
-    return <Profile {...this.props} profile={this.props.profile}/>
+    return <Profile {...this.props}/>
   }
 }
 
 const mapStateToProps = (state) => ({
   profile: state.profile.PROFILE,
+  status: state.profile.STATUS,
 })
 
-const mapDispatchToProps = { getProfileThunkCreator }
+const mapDispatchToProps = { getProfileThunkCreator, getUserStatus, putUserStatus }
 
 export default compose(
   connect(mapStateToProps, mapDispatchToProps),

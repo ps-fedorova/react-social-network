@@ -2,34 +2,53 @@ import React from "react";
 import s from "./../Profile.module.css";
 
 class ProfileStatus extends React.Component {
-
   state = {
-    editMode: true,
+    editMode: false,
+    status: this.props.status
   }
 
-  setEditMode = () => {
+  onStatusChange = (evt) => {
     this.setState({
-      editMode: !this.state.editMode
+      status: evt.target.value
     })
+  }
+
+
+  activateEditMode = () => {
+    this.setState({
+      editMode: true
+    })
+  }
+
+  deactivateEditMode = () => {
+    this.setState({
+      editMode: false
+    })
+    this.props.putUserStatus(this.state.status)
   }
 
   handleFocus = (evt) => evt.target.select();
 
+
+
   render() {
-    const { profile } = this.props;
-    const { editMode } = this.state;
+
     return (
       <>
-        {editMode
+        {this.state.editMode
           ? <input
             autoFocus={true}
             className={s.profileStatus__input}
-            onBlur={this.setEditMode}
-            value={profile ? profile.aboutMe : ''}
-            onChange={() => ({})}
+            onBlur={this.deactivateEditMode}
+            value={this.state.status}
+            onChange={this.onStatusChange}
             onFocus={this.handleFocus}
           />
-          : <p className={s.profileStatus__p} onClick={this.setEditMode}>{profile ? profile.aboutMe : ''}</p>
+          : <p className={s.profileStatus__p}
+               onClick={this.activateEditMode}
+          >
+            {this.props.status ? this.props.status : "(нет статуса)"}
+          </p>
         }
       </>
     )

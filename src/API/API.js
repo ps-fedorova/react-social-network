@@ -38,5 +38,20 @@ export const profileAPI = {
     return (
       axiosInstance.get(`profile/${id}`)
     ).then(res => res.data)
-  }
+  },
+  getStatus(id) {
+    return (
+      axiosInstance.get(`/profile/status/${id}`)
+    ).then(res => res.data)
+  },
+  updateStatus(status) {
+    return (
+      axiosInstance.put(`/profile/status`, { status: status })
+        .then(res => {
+            if (res.data.resultCode === 0) {
+              return res.data
+            }
+          }
+        ))
+  },
 }

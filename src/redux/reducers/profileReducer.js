@@ -1,4 +1,4 @@
-import { ADD_POST, UPDATE_NEW_POST_TEXT, SET_USER_PROFILE } from "../types";
+import { ADD_POST, UPDATE_NEW_POST_TEXT, SET_USER_PROFILE, SET_STATUS } from "../types";
 import { profileAPI } from "../../API/API";
 
 const initialState = {
@@ -17,7 +17,8 @@ const initialState = {
     },
   ],
   NEW_POST_TEXT: "",
-  PROFILE: null
+  PROFILE: null,
+  STATUS: "",
 };
 
 // Первый экшин диспачится при загрузке страницы (это логика из коробки redux).
@@ -39,6 +40,9 @@ const profileReducer = (state = initialState, action) => {
       }
     case SET_USER_PROFILE:
       return { ...state, PROFILE: action.profile }
+    case SET_STATUS:
+      console.log(action.status)
+      return { ...state, STATUS: action.status }
     default:
       return state;
   }
@@ -54,10 +58,9 @@ export const updateNewPostText = (text) => ({
 
 export const addPost = () => ({ type: ADD_POST });
 
-const setUserProfile = (profile) => ({
-  type: SET_USER_PROFILE,
-  profile
-})
+const setUserProfile = (profile) => ({ type: SET_USER_PROFILE, profile });
+const setUserStatus = (status) => ({ type: SET_STATUS, status });
+
 
 // thunks
 export const getProfileThunkCreator = (id) => {
@@ -66,5 +69,23 @@ export const getProfileThunkCreator = (id) => {
       dispatch(setUserProfile(data));
       console.log("юзер!");
     }).catch(() => console.log("юзер не пришел =(("))
+  }
+}
+
+export const getUserStatus = (id) => {
+  return (dispatch) => {
+    profileAPI.getStatus(id).then(data => {
+      dispatch(setUserStatus(data));
+      console.log("статус!");
+    }).catch(() => console.log("статус не пришел =(("))
+  }
+}
+
+export const putUserStatus = (status) => {
+  return (dispatch) => {
+    profileAPI.updateStatus(status).then(() => {
+      dispatch(setUserStatus(status));
+      console.log("статус обновился!");
+    }).catch(() => console.log("статус не обновился =(("))
   }
 }

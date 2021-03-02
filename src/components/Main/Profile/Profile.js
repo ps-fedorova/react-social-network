@@ -5,7 +5,7 @@ import ProfilePostsContainer from "./ProfilePosts/ProfilePostsContainer";
 import s from "./Profile.module.css";
 import ProfileStatus from "./ProfileStatus/ProfileStatus";
 
-const Profile = ({profile}) => {
+const Profile = ({ profile, status, putUserStatus }) => {
 
   return (
     <div>
@@ -13,10 +13,10 @@ const Profile = ({profile}) => {
       <div className={s.profile__content}>
         <div className={s.profile__info}>
           <IconAvatar profileAvatarClassName={s.profile__IconAvatar} profile={profile}/>
-         <div className={s.profile__text}>
-           <p className={s.profileStatus__p}>{profile ? profile.fullName : ''}</p>
-           <ProfileStatus profile={profile}/>
-         </div>
+          <div className={s.profile__text}>
+            <p className={s.profileStatus__p}>{profile ? profile.fullName : ''}</p>
+            <ProfileStatus profile={profile} status={status} putUserStatus={putUserStatus}/>
+          </div>
         </div>
         <ProfilePostsContainer/>
       </div>
