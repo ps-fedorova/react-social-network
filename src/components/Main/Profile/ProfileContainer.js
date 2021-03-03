@@ -11,7 +11,7 @@ class ProfileContainer extends React.Component { // 1
   componentDidMount() {
     let id = this.props.match.params.userId // запрос к URL
     if (!id) { // если в адресной строке .../profile, то по умолчанию подставится 2
-      id = 2
+      id = 15036
     }
     this.props.getProfileThunkCreator(id);
     this.props.getUserStatus(id);
