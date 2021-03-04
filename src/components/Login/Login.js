@@ -1,32 +1,63 @@
 import React from "react";
 import s from "./Login.module.css"
+import { Form, Field } from 'react-final-form';
 
 // Create New Account
 
 const Login = () => {
+
+  const logIn = (values) => {
+    console.log(values);
+  }
+
   return (
-    <form className={s.form}>
-      <div className={s.position}>
-        <h2 className={s.h2}>Login</h2>
+    <Form
+      onSubmit={logIn}
+      render={({ handleSubmit }) => (
+        <form className={s.form} onSubmit={handleSubmit}>
+          <div className={s.position}>
+            <h2 className={s.h2}>Login</h2>
 
-        <label className={s.label} htmlFor="email">
-          <input className={s.input} type="text" placeholder="email" id="email" required/>
-        </label>
+            <Field
+              name="email"
+              type="email"
+            >
+              {({ input, meta }) => (
+                <label className={s.label} htmlFor="email">
+                  <input {...input} className={s.input} type="text" placeholder="email" id="email" required/>
+                </label>
+              )}
+            </Field>
 
-        <label className={s.label} htmlFor="psw">
-          <input className={s.input} type="password" placeholder="password" id="password" required/>
-        </label>
-
-        <div className={s["rememberMe-container"]}>
-          <label className={s["rememberMe-label"]} htmlFor="rememberMe">remember me</label>
-          <input className={s.rememberMe} type="checkbox" id="rememberMe"/>
-        </div>
-
-        <button className={`button ${s.button}`} type="submit">Login</button>
-      </div>
-    </form>
+            <Field
+              name="password"
+              type="password"
+            >
+              {({ input, meta }) => (
+                <label className={s.label} htmlFor="psw">
+                  <input {...input} className={s.input}  placeholder="password" id="password" required/>
+                </label>
+              )}
+            </Field>
+            <Field
+              name="rememberMeCheckbox"
+              type="checkbox"
+            >
+              {({ input, meta }) => (
+                <div className={s["rememberMe-container"]}>
+                  <label className={s["rememberMe-label"]} htmlFor="rememberMe">remember me</label>
+                  <input {...input} className={s.rememberMe}  id="rememberMe"/>
+                </div>
+              )}
+            </Field>
+            <button className={`button ${s.button}`} type="submit">Login</button>
+          </div>
+        </form>
+      )
+      }
+    />
   )
-
 }
 
 export default Login;
+
