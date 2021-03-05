@@ -4,17 +4,10 @@ import Post from "../../../../utils/ui-kit/Post/Post";
 import { AddMessageForm } from "./addMessageForm";
 
 const Messages = (props) => {
-  const { dialogs, sent, changeTextArea } = props;
+  const { dialogs, sent } = props;
 
   const onSent = (value) => {
-    // evt.preventDefault()
-    // sent();
-    console.log(value.newMessageBody)
-  }
-
-  const onChangeTextArea = (evt) => {
-    const text = evt.target.value
-    changeTextArea(text);
+    sent(value.newMessageBody);
   }
 
   return (
@@ -28,7 +21,7 @@ const Messages = (props) => {
         })
         }
       </ul>
-      <AddMessageForm dialogs={dialogs} onChangeTextArea={onChangeTextArea} onSent={onSent}/>
+      <AddMessageForm dialogs={dialogs} onSent={onSent}/>
     </div>
   )
 }

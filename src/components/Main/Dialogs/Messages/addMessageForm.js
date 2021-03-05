@@ -2,7 +2,7 @@ import React from "react";
 import s from "./Messages.module.css";
 import { Form, Field } from 'react-final-form';
 
-export const AddMessageForm = ({ dialogs, onChangeTextArea, onSent }) => {
+export const AddMessageForm = ({ dialogs, onSent }) => {
 
   return (
     <Form
@@ -16,7 +16,6 @@ export const AddMessageForm = ({ dialogs, onChangeTextArea, onSent }) => {
                 className={`textarea ${s.messages__textarea}`}
                 rows="5"
                 value={dialogs.NEW_MESSAGE_TEXT}
-                onChange={onChangeTextArea}
                 {...input}
               />
               </label>
