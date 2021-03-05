@@ -28,6 +28,6 @@ const mapDispatchToProps = { sent, changeTextArea }
 
 export default compose(
   connect(mapStateToProps, mapDispatchToProps),
-  withAuthRedirect
+  // withAuthRedirect
 )(DialogsContainer);
 

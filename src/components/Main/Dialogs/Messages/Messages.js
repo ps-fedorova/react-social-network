@@ -1,13 +1,15 @@
 import React from 'react';
 import s from "./Messages.module.css"
 import Post from "../../../../utils/ui-kit/Post/Post";
+import { AddMessageForm } from "./addMessageForm";
 
 const Messages = (props) => {
   const { dialogs, sent, changeTextArea } = props;
 
-  const onSent = (evt) => {
-    evt.preventDefault()
-    sent();
+  const onSent = (value) => {
+    // evt.preventDefault()
+    // sent();
+    console.log(value.newMessageBody)
   }
 
   const onChangeTextArea = (evt) => {
@@ -26,21 +28,10 @@ const Messages = (props) => {
         })
         }
       </ul>
-      <form className={s.messages__formSent}>
-        <label className={`label`}>
-          <textarea
-            className={`textarea ${s.messages__textarea}`}
-            rows="5"
-            value={dialogs.NEW_MESSAGE_TEXT}
-            onChange={onChangeTextArea}
-          />
-        </label>
-        <div className={s.messages__ButtonsPosition}>
-          <button className={`button ${s.messages__ButtonFormSent}`} onClick={onSent}>sent</button>
-        </div>
-      </form>
+      <AddMessageForm dialogs={dialogs} onChangeTextArea={onChangeTextArea} onSent={onSent}/>
     </div>
   )
 }
+
 
 export default Messages;
