@@ -1,34 +1,17 @@
 import React from 'react';
 import ProfilePost from './ProfilePost/ProfilePost'
-import s from './ProfilePosts.module.css'
+import { ProfilePostForm } from "./ProfilePost/ProfilePostForm";
 
 const ProfilePosts = (props) => {
-  const { profile, updateNewPostText, addPost } = props;
+  const { profile, addPost } = props;
 
-  const newPostElement = React.createRef();
-
-  const onChangeNewPostText = () => {
-    const text = newPostElement.current.value;
-    updateNewPostText(text)
-  }
-
-  const onAddPost = (evt) => {
-    evt.preventDefault();
-    addPost();
-  }
+  const onAddPost = (value) => addPost(value.newPostBody);
 
   return (
     <>
       <h2>My posts</h2>
       <div>
-        <form className={`list ${s.profilePosts__form}`}>
-          <label className={`label ${s.profilePosts__label}`} htmlFor="post">
-            <input ref={newPostElement} className={`input ${s.profilePosts__input}`} id="post"
-                   value={profile.NEW_POST_TEXT}
-                   onChange={onChangeNewPostText}/>
-          </label>
-          <button onClick={onAddPost} className={`button post__item ${s.profilePosts__button}`}>add</button>
-        </form>
+        <ProfilePostForm onAddPost={onAddPost}/>
       </div>
       <ul className="list">
         {profile.ARR_POSTS.map((item, index) => {

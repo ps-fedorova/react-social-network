@@ -1,4 +1,4 @@
-import { ADD_POST, UPDATE_NEW_POST_TEXT, SET_USER_PROFILE, SET_STATUS } from "../types";
+import { ADD_POST, SET_USER_PROFILE, SET_STATUS } from "../types";
 import { profileAPI } from "../../API/API";
 
 const initialState = {
@@ -16,7 +16,6 @@ const initialState = {
       message: "Все начинать сначала"
     },
   ],
-  NEW_POST_TEXT: "",
   PROFILE: null,
   STATUS: "",
 };
@@ -26,17 +25,9 @@ const initialState = {
 
 const profileReducer = (state = initialState, action) => {
   switch (action.type) {
-    case UPDATE_NEW_POST_TEXT:
-      return {
-        ...state,
-        NEW_POST_TEXT: action.newText
-      }
     case ADD_POST:
       return {
-        ...state,
-        // ARR_POSTS: [...state.ARR_POSTS, { message: state.NEW_POST_TEXT }],
-        ARR_POSTS: [...state.ARR_POSTS, { message: { ...state }.NEW_POST_TEXT }],
-        NEW_POST_TEXT: "",
+        ...state, ARR_POSTS: [{ message: action.postMessage }, ...state.ARR_POSTS],
       }
     case SET_USER_PROFILE:
       return { ...state, PROFILE: action.profile }
@@ -50,9 +41,8 @@ const profileReducer = (state = initialState, action) => {
 export default profileReducer;
 
 // actions
-export const updateNewPostText = (text) => ({ type: UPDATE_NEW_POST_TEXT, newText: text, });
 
-export const addPost = () => ({ type: ADD_POST });
+export const addPost = (postMessage) => ({ type: ADD_POST, postMessage });
 
 const setUserProfile = (profile) => ({ type: SET_USER_PROFILE, profile });
 const setUserStatus = (status) => ({ type: SET_STATUS, status });
