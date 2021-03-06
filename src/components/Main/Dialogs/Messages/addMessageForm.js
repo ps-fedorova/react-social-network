@@ -1,6 +1,7 @@
 import React from "react";
 import s from "./Messages.module.css";
 import { Form, Field } from 'react-final-form';
+import { required } from "../../../../utils/validation/validation";
 
 export const AddMessageForm = ({ dialogs, onSent }) => {
 
@@ -9,7 +10,7 @@ export const AddMessageForm = ({ dialogs, onSent }) => {
       onSubmit={onSent}
       render={({ handleSubmit }) => (
         <form className={s.messages__formSent} onSubmit={handleSubmit}>
-          <Field name={"newMessageBody"} type="email">
+          <Field name={"newMessageBody"} type="email" validate={required}>
             {({ input }) => (
               <label className={`label`}>
               <textarea

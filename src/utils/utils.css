@@ -2,11 +2,17 @@
   --rootText: #ffffff;
   --rootBackground: #1c1c1c;
   --rootBackgroundSecond: #5d5d5d;
+  --rootBackgroundThird: #aeaeae;
+  --rootError: red;
 
   --box-shadow: 0 3px 8px 0 rgba(0, 0, 0, .5);
   --font: 14px 1.15 Arial;
   --height-content: calc(100vh - 91px);
 }
+
+/** {*/
+/*  outline: 1px solid #2d2dff;*/
+/*}*/
 
 .link, .button {
   transition: all .3s;
@@ -32,7 +38,7 @@
 .button:hover {
   position: relative;
   opacity: 1;
-  transform: scale(1.05); /*вот так*/
+  transform: scale(1.05);
 }
 
 .list {
@@ -58,6 +64,7 @@
   border: none;
   border-radius: 8px;
   overflow: hidden;
+  line-height: 1.4;
 }
 
 .label {

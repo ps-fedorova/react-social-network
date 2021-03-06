@@ -1,23 +1,13 @@
 .profilePosts__form {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
 }
 
 .profilePosts__button {
   padding: 10px 20px 11px;
-  margin-left: 10px;
-  margin-right: 10px;
+  margin: 0 10px;
 }
 
-.profilePosts__label {
-  box-shadow: var(--box-shadow);
-  max-width: 400px;
-  flex: 1 1 auto;
-}
-
-.profilePosts__input {
-  width: 100%;
-  padding: 10px 15px 13px;
-  background-color: var(--rootText);
-  color: var(--rootBackground) ;
+.profilePosts__button:disabled {
+  opacity: .2;
 }

@@ -29,8 +29,9 @@
   margin-top: 20px;
   width: 100%;
   color: var(--rootBackground);
-  background-color: var(--rootText);
-  padding: 10px 15px;
+  background-color: var(--rootBackgroundThird);
+  padding: 15px;
+  border-radius: 8px;
 }
 
 .rememberMe-label {
